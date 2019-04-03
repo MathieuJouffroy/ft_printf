@@ -17,16 +17,12 @@ void	hash_padding(t_printf *pf)
 		pf->buff[pf->buff_i++] = 'X';
 }
 
-void	padding(t_printf *pf, int prec, int len, uintmax_t nb)
+void	padding(t_printf *pf, int prec, int len)
 {
 	prec = plus_flag(pf, len, prec);
 	(pf->flags & F_SPACE) ? char_padding(pf, ' ') : 0;
 	pf->neg ? char_padding(pf, '-') : 0;
 	min_padding(pf, '0', prec);
-	if (pf->conv == 'X')
-		buffer(pf, to_upper(ft_lltoa_base(nb, pf->base)), 0, len);
-	else
-		buffer(pf, ft_lltoa_base(nb, pf->base), 0, len);
 }
 
 void	u_padding(t_printf *pf, int prec, int len, uintmax_t nb)

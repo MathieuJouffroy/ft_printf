@@ -10,19 +10,16 @@ void	reset_struct(t_printf *pf)
 	pf->conv = 0;
 }
 
-int		end(t_printf *pf, int i)
+int		end(t_printf *pf)
 {
+	//va_end(pf->ap);
+	pf->buff[pf->buff_i] = '\0';
+	write(pf->fd, pf->buff, pf->buff_i);
 	va_end(pf->ap);
-	if (i == 1)
-	{
-		pf->buff[pf->buff_i] = '\0';
-		write(pf->fd, pf->buff, pf->buff_i);
-		return (pf->ret + pf->buff_i);
-	}
-	return (-1);
+	return (pf->ret + pf->buff_i);
 }
 
-void	reset(t_printf *pf)
+void	reset_buff(t_printf *pf)
 {
 	write(pf->fd, pf->buff, BUFF_SIZE - 1);
 	ft_bzero(pf->buff, BUFF_SIZE);
@@ -33,7 +30,7 @@ void	reset(t_printf *pf)
 void	check_buff(t_printf *pf)
 {
 	if (pf->buff_i == BUFF_SIZE - 1)
-		reset(pf);
+		reset_buff(pf);
 }
 
 int		buffer(t_printf *pf, char *str, int i, int n)
@@ -45,7 +42,7 @@ int		buffer(t_printf *pf, char *str, int i, int n)
 	{
 		ft_memcpy(&pf->buff[pf->buff_i], &str[i], ((BUFF_SIZE - 1) - pf->buff_i));
 		i += (BUFF_SIZE - 1) - pf->buff_i;
-		reset(pf);
+		reset_buff(pf);
 		buffer(pf, str, i, n);
 	}
 	else

@@ -25,7 +25,7 @@ int		ft_printf(const char *format, ...)
 			pf.format++;
 		}
 	}
-    return (end(&pf, 1));
+    return (end(&pf));
 }
 
 int		ft_dprintf(int fd, const char *format, ...)
@@ -53,5 +53,5 @@ int		ft_dprintf(int fd, const char *format, ...)
 			pf.format++;
 		}
 	}
-    return (end(&pf, 1));
+    return (end(&pf));
 }

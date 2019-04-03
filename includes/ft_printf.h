@@ -116,13 +116,13 @@ void	reset_struct(t_printf *pf);
 void	reset_buff(t_printf *pf);
 void	check_buff(t_printf *pf);
 int		buffer(t_printf *pf, char *str, int i, int n);
-int		end(t_printf *pf, int i);
+int		end(t_printf *pf);
 /*
 **---------------------------------- PADDING -------------------------------
 */
 
 void			hash_padding(t_printf *pf);
-void			padding(t_printf *pf, int prec, int len, uintmax_t nb);
+void			padding(t_printf *pf, int prec, int len);
 void			u_padding(t_printf *pf, int prec, int len, uintmax_t nb);
 void			min_padding(t_printf *pf, char c, int len);
 void			char_padding(t_printf *pf, char c);
@@ -132,7 +132,7 @@ void			char_padding(t_printf *pf, char c);
 */
 
 int				plus_flag(t_printf *pf, int len, int prec);
-int				check_zero(t_printf *pf, int len);
+int				zero_flag(t_printf *pf, int len);
 int				check_ohash(t_printf *pf, int prec);
 int				check_xhash(t_printf *pf, int prec, int nb);
 uintmax_t	    treat_negaspos(t_printf *pf, intmax_t nb);

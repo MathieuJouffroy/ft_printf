@@ -31,7 +31,7 @@ int		check_xhash(t_printf *pf, int prec, int nb)
 	return (prec);
 }
 
-int		check_zero(t_printf *pf, int len)
+int		zero_flag(t_printf *pf, int len)
 {
 	int prec;
 
