@@ -6,18 +6,22 @@ int main (void)
 {
 	int nb;
 	long int nb2;
+	unsigned int unb;
 	int nb0;
+	int nbo;
 	intmax_t nbmax;
 
 	long long c;
 	unsigned long int nb1;
 	char *str;
 
-	nb = 42;
+	nb = 1222921996;
 	nb0 = 0;
 	nb2 = 2147483647;
 	nbmax = 9223372036854775807;
 	nb1 = 4294967295;
+	unb = 4294967295;
+	nbo = -105192774;
 	
 	str = "salut";
 /* ----------------------------------- D_TEST ------------------------------- */
@@ -32,6 +36,10 @@ int main (void)
 	//printf("%%0.5d      :%0.5d\n", nb);
 	//printf("%%010d      :%010d\n", nb);
 	//printf("%%010.5d    :%010.5d\n", nb);0
+/*
+
+	printf("\n\n%- 30.0d:\n", -nb);
+    ft_printf("%- 30.0d:\n", -nb);
 
 	ft_printf("^.^/%060.48zd^.^/\n", (long)nb0);
 	printf("^.^/%060.48zd^.^/\n", (long)nb0);
@@ -139,11 +147,13 @@ int main (void)
 
 	printf("\n\n%-.4ld:\n", -nb2);
     ft_printf("%-.4ld:", -nb2);
+
+*/
 /*
 	ft_printf("hallo\n");
 
-	printf("\n\n%-30.5lU:\n", -nb1);
-    ft_printf("%-30.5lU:", -nb1);
+	printf("\n\n%-30.5u:\n", unb);
+    ft_printf("\n%-30.5u:\n", unb);
 
 	printf("\n\n%030.25lU:\n", nb1);
     ft_printf("%030.25lU:", nb1);
@@ -190,8 +200,6 @@ int main (void)
 	printf("\n\n%15.34lU:\n", nb1);
     ft_printf("%15.34lU:", nb1);
 
-
-
 	printf("\n\n%15.34o:\n", nb);
     ft_printf("%15.34o:", nb);
 
@@ -203,7 +211,18 @@ int main (void)
 
 	printf("\n\n%15.34o:\n", nb);
     ft_printf("%15.34o:", nb);
-
 */
+	printf("\n\n!%#-2llo!:\n", (unsigned long long)nb0);
+    ft_printf("!%#-2llo!:\n", (unsigned long long)nb0);
+
+	printf("\n\n!%#-2.1llo!:\n", (unsigned long long)nb);
+    ft_printf("!%#-2.1llo!:\n", (unsigned long long)nb);
+
+	printf("\n\n%#15llo:\n", (unsigned long long)nb);
+    ft_printf("%#15llo:\n", (unsigned long long)nb);
+
+
+	printf("\n\n^.^/%#-o^.^/:\n", nbo);
+    ft_printf("^.^/%#-o^.^/:\n", nbo);
     return (0);
 }

@@ -71,6 +71,7 @@ typedef struct	s_printf
 	int		    flags;
     int         min_len;
 	int		    precision;
+    int         pad;
     int		    buff_i;
     int		    base;
     int         neg;
@@ -122,7 +123,8 @@ int		end(t_printf *pf);
 */
 
 void			hash_padding(t_printf *pf);
-void			padding(t_printf *pf, int prec, int len);
+//void			padding(t_printf *pf, int prec, int len);
+void			padding(t_printf *pf, int len);
 void			u_padding(t_printf *pf, int prec, int len, uintmax_t nb);
 void			min_padding(t_printf *pf, char c, int len);
 void			char_padding(t_printf *pf, char c);
@@ -131,10 +133,14 @@ void			char_padding(t_printf *pf, char c);
 **----------------------------------- CHECK --------------------------------
 */
 
-int				plus_flag(t_printf *pf, int len, int prec);
-int				zero_flag(t_printf *pf, int len);
-int				check_ohash(t_printf *pf, int prec);
-int				check_xhash(t_printf *pf, int prec, int nb);
+//int				plus_flag(t_printf *pf, int len, int prec);
+void				plus_flag(t_printf *pf, int len);
+//int				zero_flag(t_printf *pf, int len);
+void				zero_flag(t_printf *pf, int len);
+//int				check_ohash(t_printf *pf, int prec);
+void				check_ohash(t_printf *pf, int nb);
+//int				check_xhash(t_printf *pf, int prec, int nb);
+void				check_xhash(t_printf *pf, int nb);
 uintmax_t	    treat_negaspos(t_printf *pf, intmax_t nb);
 
 
@@ -145,6 +151,9 @@ uintmax_t	    treat_negaspos(t_printf *pf, intmax_t nb);
 uintmax_t	treat_negaspos(t_printf *pf, intmax_t nb);
 char		*ft_lltoa_base(uintmax_t nb, intmax_t base);
 int			int_conv(t_printf *pf, intmax_t nb);
+int			u_conv(t_printf *pf, uintmax_t nb);
+int		    x_conv(t_printf *pf, uintmax_t nb);
+int		    o_conv(t_printf *pf, uintmax_t nb);
 //void	    uox_conv(t_printf *pf, uintmax_t nb);
 
 

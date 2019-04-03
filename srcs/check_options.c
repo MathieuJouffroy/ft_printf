@@ -1,51 +1,46 @@
 #include "../includes/ft_printf.h"
 
-int		plus_flag(t_printf *pf, int len, int prec)
+void		zero_flag(t_printf *pf, int nb_len)
+{
+	if (pf->flags & F_ZERO)
+	{
+		pf->pad = pf->precision ? pf->precision - nb_len :
+				(pf->min_len - nb_len - pf->neg);
+		if ((pf->flags & F_SPACE) && (pf->precision == 0))
+			pf->pad--;
+	}
+	else
+		pf->pad = pf->precision ? pf->precision - nb_len : 0;
+	pf->pad = pf->pad < 0 ? 0 : pf->pad;
+}
+
+
+void	plus_flag(t_printf *pf, int nb_len)
 {
 	if (pf->flags & F_PLUS)
 	{
 		char_padding(pf, '+');
-		if (len >= pf->precision)
-			prec -= 1;
+		if (nb_len >= pf->precision)
+			pf->pad--;
 	}
-	return (prec);
 }
 
-int		check_ohash(t_printf *pf, int prec)
-{
-	if (pf->flags & F_HASH)
-	{
-		hash_padding(pf);
-		prec -= 1;
-	}
-	return (prec);
-}
-
-int		check_xhash(t_printf *pf, int prec, int nb)
+void	check_ohash(t_printf *pf, int nb)
 {
 	if ((pf->flags & F_HASH) && nb != 0)
 	{
 		hash_padding(pf);
-		prec = pf->precision ? prec : prec - 2;
+		pf->pad--;
 	}
-	return (prec);
 }
 
-int		zero_flag(t_printf *pf, int len)
+void	check_xhash(t_printf *pf, int nb)
 {
-	int prec;
-
-	if (pf->flags & F_ZERO)
+	if ((pf->flags & F_HASH) && nb != 0)
 	{
-		prec = pf->precision ? pf->precision - len :
-				(pf->min_len - len - pf->neg);
-		if ((pf->flags & F_SPACE) && (pf->precision == 0))
-			prec -= 1;
+		hash_padding(pf);
+		pf->pad = pf->precision ? pf->pad : pf->pad - 2;
 	}
-	else
-		prec = pf->precision ? pf->precision - len : 0;
-	prec = prec < 0 ? 0 : prec;
-	return (prec);
 }
 
 /*
