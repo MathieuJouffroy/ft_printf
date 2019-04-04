@@ -33,17 +33,17 @@ void	check_buff(t_printf *pf)
 		reset_buff(pf);
 }
 
-int		buffer(t_printf *pf, char *str, int i, int n)
+int		buffer(t_printf *pf, char *str, int len)
 {
-	int len;
+	int i;
 
-	len = n - i;
+	i = 0;
 	if (pf->buff_i + len >= BUFF_SIZE - 1)
 	{
 		ft_memcpy(&pf->buff[pf->buff_i], &str[i], ((BUFF_SIZE - 1) - pf->buff_i));
 		i += (BUFF_SIZE - 1) - pf->buff_i;
 		reset_buff(pf);
-		buffer(pf, str, i, n);
+		buffer(pf, str, len);
 	}
 	else
 		while (len--)

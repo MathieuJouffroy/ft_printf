@@ -28,11 +28,15 @@ UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)ft_nbrlen.c			\
 				$(UTILSDIR)ft_lltoa_base.c		\
 				$(UTILSDIR)to_upper.c 			\
+				$(UTILSDIR)ft_wcharlen.c 		\
+				$(UTILSDIR)ft_get_wchar.c 		\
+
 
 UTIOBJ	= $(UTILS:.c=.o)
 
 CONV	=		$(CONVDIR)cast_nbrs.c			\
 				$(CONVDIR)numbers.c				\
+				$(CONVDIR)char_strings.c		\
 
 CONVOBJ	= $(CONV:.c=.o)
 

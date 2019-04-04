@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-int		ft_castconvint(t_printf *pf)
+void		ft_castconvint(t_printf *pf)
 {
 	intmax_t nb;
 
@@ -19,10 +19,9 @@ int		ft_castconvint(t_printf *pf)
 	else
 		nb = (intmax_t)(va_arg(pf->ap, int));
 	int_conv(pf, nb);
-	return (1);
 }
 
-int		        ft_castconvuox(t_printf *pf)
+void		        ft_castconvuox(t_printf *pf)
 {
 	uintmax_t	nb;
 
@@ -40,6 +39,5 @@ int		        ft_castconvuox(t_printf *pf)
 		nb = ((uintmax_t)va_arg(pf->ap, size_t));
 	else
 		nb = (uintmax_t)va_arg(pf->ap, unsigned int);
-	(pf->conv == 'u' || pf->conv == 'U') ? u_conv(pf, nb) : ox_conv(pf, nb);
-	return (1);
+	(pf->conv == 'u' || pf->conv == 'U') ? uint_conv(pf, nb) : ox_conv(pf, nb);
 }

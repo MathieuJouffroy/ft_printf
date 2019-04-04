@@ -33,7 +33,7 @@ void	get_flags(t_printf *pf)
 */
 void	get_min_len(t_printf *pf)
 {
-	if (*pf->format >= 49 && *pf->format <= 57)
+	if (*pf->format >= 48 && *pf->format <= 57)
 		pf->min_len = MAX(ft_atoi(pf->format), 1);
 	if (*pf->format == '*')
 	{

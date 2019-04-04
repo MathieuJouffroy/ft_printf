@@ -10,7 +10,7 @@
 # include <float.h>
 # include <sys/types.h>
 
-# define BUFF_SIZE 64
+# define BUFF_SIZE 128
 
 # define ABS(Value) (Value < 0) ? -Value : Value
 # define DABS(Value)(Value < 0.0f) ? -Value : Value
@@ -23,19 +23,19 @@
 **-------------------------------- FLAGS & SPEC ----------------------------
 */
 
-# define F_HASH (1 << 0)   //  '#'    00001 = 1  
+# define F_HASH  (1 << 0)   //  '#'    00001 = 1  
 # define F_SPACE (1 << 1)  //  ' '    00010 = 2
-# define F_PLUS (1 << 2)   //  '+'    00100 = 4  // sign of number
+# define F_PLUS  (1 << 2)   //  '+'    00100 = 4  // sign of number
 # define F_MINUS (1 << 3)  //  '-'    01000 = 8  // left justify
-# define F_ZERO (1 << 4)    // '0'    10000 = 16
+# define F_ZERO  (1 << 4)    // '0'    10000 = 16
 
-# define LM_SHORT (1 << 5)  //  'h'  (di) short  int 	 /   (uox) unsigned short     int 
-# define LM_LONG (1 << 6)   //  'l'  (di) long 	 int 	 /   (uox) unsigned long      int
-# define LM_DOUBLE (1 << 7) //  'L'
-# define LM_INTMAX (1 << 8) //  'j' 	   intmax_t      /   uintmax_t
-# define LM_SIZE_T (1 << 9) //  'z'          size_t      /   ssize_t
-# define LM_CHAR (1 << 10)  // 'hh'   signed char
-# define LM_LONG2 (1 << 11) //  'll'  (di) long long  int /   (uox) unsigned long long int
+# define LM_SHORT  (1 << 5)  //  'h'  (di) short  int 	 /   (uox) unsigned short     int 
+# define LM_LONG   (1 << 6)  //  'l'  (di) long 	 int 	 /   (uox) unsigned long      int
+# define LM_DOUBLE (1 << 7)  //  'L'
+# define LM_INTMAX (1 << 8)  //  'j' 	   intmax_t      /   uintmax_t
+# define LM_SIZE_T (1 << 9)  //  'z'          size_t      /   ssize_t
+# define LM_CHAR   (1 << 10) //  'hh'   signed char
+# define LM_LONG2  (1 << 11) //  'll'  (di) long long  int /   (uox) unsigned long long int
 
 /*
 **----------------------------------- BASES -------------------------------
@@ -71,19 +71,19 @@ typedef struct	s_printf
 	int		    flags;
     int         min_len;
 	int		    precision;
-    int         pad;
-    int		    buff_i;
     int		    base;
+    int         pad;
     int         neg;
-	va_list     ap;
+    int		    buff_i;
 	char	    buff[BUFF_SIZE];
 	char	    *format;
     char        conv;
+    va_list     ap;
 }				t_printf;
 
 int		ft_printf(const char *format, ...);
 
-typedef  int(*t_f_conv)(t_printf*);
+typedef  void(*t_f_conv)(t_printf*);
 
 
 typedef struct	s_conv
@@ -105,9 +105,8 @@ int				parse_arg(t_printf *pf);
 int		        is_conv(t_printf *pf);
 int				conv_to_fct(t_printf *pf);
 int				get_conversion(t_printf *pf);
-int		        ft_castconvint(t_printf *pf);
-int		        ft_castconvuox(t_printf *pf);
-int			    c_conv(t_printf *pf);
+void		    ft_castconvint(t_printf *pf);
+void	        ft_castconvuox(t_printf *pf);
 
 /*
 **-------------------------------- BUFF MANAGER ----------------------------
@@ -116,7 +115,7 @@ int			    c_conv(t_printf *pf);
 void	reset_struct(t_printf *pf);
 void	reset_buff(t_printf *pf);
 void	check_buff(t_printf *pf);
-int		buffer(t_printf *pf, char *str, int i, int n);
+int		buffer(t_printf *pf, char *str, int len);
 int		end(t_printf *pf);
 /*
 **---------------------------------- PADDING -------------------------------
@@ -143,9 +142,15 @@ uintmax_t	        treat_negaspos(t_printf *pf, intmax_t nb);
 uintmax_t	    treat_negaspos(t_printf *pf, intmax_t nb);
 char		    *ft_lltoa_base(uintmax_t nb, intmax_t base);
 void			int_conv(t_printf *pf, intmax_t nb);
-void			u_conv(t_printf *pf, uintmax_t nb);
+void			uint_conv(t_printf *pf, uintmax_t nb);
 void		    ox_conv(t_printf *pf, uintmax_t nb);
 
+/*
+**---------------------------- CHAR & STRINGS -----------------------------
+*/
+
+void		char_conv(t_printf *pf);
+void        wchar_conv(t_printf *pf);
 
 /*
 **----------------------------------- UTILS -------------------------------
@@ -163,4 +168,6 @@ int		        ft_nbrlen(uintmax_t nb, intmax_t base);
 int				find_flag(char *str, char c);
 char		    find_conv(char *str, char c);
 char	        *to_upper(char *str);
+char		    *ft_get_wchar(wint_t wc);
+size_t		    w_charlen(wint_t wc);
 #endif

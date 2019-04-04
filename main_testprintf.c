@@ -24,6 +24,24 @@ int main (void)
 	nbo = -105192774;
 	
 	str = "salut";
+
+	//printf("{% 5.c}\n", 0);
+	//ft_printf("{% 5.c}\n", 0);
+	printf("{%5c}\n", 0);
+	ft_printf("{%5c}\n", 0);
+	printf("{% 3c}\n", 0);
+	ft_printf("{% 3c}\n", 0);
+	printf("{%3c}\n", 0);
+	ft_printf("{%3c}\n", 0);
+	printf("{%-5.8c}\n", 'h');
+	ft_printf("{%-5.8c}\n", 'h');
+	printf("{%05.8c}\n", 'h');
+	ft_printf("{%05.8c}\n", 'h');
+	printf("42%lc42\n", (char)128150);
+	ft_printf("42%lc42\n", (char)128150);
+	printf("%lc\n", (char)128150);
+	ft_printf("%lc\n", (char)128150);
+	
 /* ----------------------------------- D_TEST ------------------------------- */
 	//printf("----- D_TEST -----\n");
 	//printf("hash        :%#d\n", nb);  //undefined behavior
@@ -36,8 +54,8 @@ int main (void)
 	//printf("%%0.5d      :%0.5d\n", nb);
 	//printf("%%010d      :%010d\n", nb);
 	//printf("%%010.5d    :%010.5d\n", nb);0
-/*
 
+/*
 	printf("\n\n%- 30.0d:\n", -nb);
     ft_printf("%- 30.0d:\n", -nb);
 
@@ -148,8 +166,6 @@ int main (void)
 	printf("\n\n%-.4ld:\n", -nb2);
     ft_printf("%-.4ld:", -nb2);
 
-*/
-/*
 	ft_printf("hallo\n");
 
 	printf("\n\n%-30.5u:\n", unb);
@@ -211,7 +227,7 @@ int main (void)
 
 	printf("\n\n%15.34o:\n", nb);
     ft_printf("%15.34o:", nb);
-*/
+
 	printf("\n\n!%#-2llo!:\n", (unsigned long long)nb0);
     ft_printf("!%#-2llo!:\n", (unsigned long long)nb0);
 
@@ -224,5 +240,6 @@ int main (void)
 
 	printf("\n\n^.^/%#-o^.^/:\n", nbo);
     ft_printf("^.^/%#-o^.^/:\n", nbo);
+	*/
     return (0);
 }
