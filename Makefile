@@ -41,7 +41,7 @@ SRCS 	=		$(SRCDIR)ft_printf.c			\
 				$(SRCDIR)parse_args.c			\
 				$(SRCDIR)conv_specifiers.c		\
 				$(SRCDIR)padding.c				\
-				$(SRCDIR)check_options.c		\
+				$(SRCDIR)check_flag_pad.c		\
 
 OBJ	   = $(SRCS:.c=.o)
 

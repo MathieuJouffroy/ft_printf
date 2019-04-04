@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-void		zero_flag(t_printf *pf, int nb_len)
+void		zero_flag_pad(t_printf *pf, int nb_len)
 {
 	if (pf->flags & F_ZERO)
 	{
@@ -15,7 +15,7 @@ void		zero_flag(t_printf *pf, int nb_len)
 }
 
 
-void	plus_flag(t_printf *pf, int nb_len)
+void	plus_flag_pad(t_printf *pf, int nb_len)
 {
 	if (pf->flags & F_PLUS)
 	{
@@ -25,21 +25,15 @@ void	plus_flag(t_printf *pf, int nb_len)
 	}
 }
 
-void	check_ohash(t_printf *pf, int nb)
+void	hash_flag_pad(t_printf *pf, int nb)
 {
 	if ((pf->flags & F_HASH) && nb != 0)
 	{
 		hash_padding(pf);
-		pf->pad--;
-	}
-}
-
-void	check_xhash(t_printf *pf, int nb)
-{
-	if ((pf->flags & F_HASH) && nb != 0)
-	{
-		hash_padding(pf);
-		pf->pad = pf->precision ? pf->pad : pf->pad - 2;
+		if (pf->conv == 'x' || pf->conv == 'X')
+			pf->pad = pf->precision ? pf->pad : pf->pad - 2;
+		else
+			pf->pad--;	
 	}
 }
 

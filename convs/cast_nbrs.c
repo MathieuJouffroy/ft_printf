@@ -40,8 +40,9 @@ int		        ft_castconvuox(t_printf *pf)
 		nb = ((uintmax_t)va_arg(pf->ap, size_t));
 	else
 		nb = (uintmax_t)va_arg(pf->ap, unsigned int);
-	(pf->conv == 'u' || pf->conv == 'U') ? u_conv(pf, nb) : 0;
-	(pf->conv == 'x' || pf->conv == 'X') ? x_conv(pf, nb) : 0;
-	(pf->conv == 'o' || pf->conv == 'O') ? o_conv(pf, nb) : 0;
+	//(pf->conv == 'u' || pf->conv == 'U') ? u_conv(pf, nb) : 0;
+	(pf->conv == 'u' || pf->conv == 'U') ? u_conv(pf, nb) : ox_conv(pf, nb);
+	//(pf->conv == 'x' || pf->conv == 'X') ? x_conv(pf, nb) : 0;
+	//(pf->conv == 'o' || pf->conv == 'O') ? o_conv(pf, nb) : 0;
 	return (1);
 }

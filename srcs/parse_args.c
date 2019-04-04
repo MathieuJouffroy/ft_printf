@@ -23,12 +23,9 @@ void	get_flags(t_printf *pf)
 
 	while ((res = find_flag("# +-0", *pf->format)) && pf->format++)
 		pf->flags |= res;
-	if ((pf->flags & F_ZERO) && (pf->flags & F_MINUS))
-		pf->flags &= ~F_ZERO;
-	if ((pf->flags & F_PLUS) && (pf->flags & F_SPACE))
-		pf->flags &= ~F_SPACE;
+	((pf->flags & F_ZERO) && (pf->flags & F_MINUS)) ? pf->flags &= ~F_ZERO : 0;
+	((pf->flags & F_PLUS) && (pf->flags & F_SPACE)) ? pf->flags &= ~F_SPACE : 0;
 }
-
 /*
 **      Field Width
 **

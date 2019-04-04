@@ -17,14 +17,6 @@ void	hash_padding(t_printf *pf)
 		pf->buff[pf->buff_i++] = 'X';
 }
 
-void	padding(t_printf *pf, int len)
-{
-	plus_flag(pf, len);
-	(pf->flags & F_SPACE) ? char_padding(pf, ' ') : 0;
-	pf->neg ? char_padding(pf, '-') : 0;
-	min_padding(pf, '0', pf->pad);
-}
-
 void	min_padding(t_printf *pf, char c, int len)
 {
 	if (len > 0)
