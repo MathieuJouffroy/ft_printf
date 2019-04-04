@@ -14,7 +14,6 @@ void		zero_flag_pad(t_printf *pf, int nb_len)
 	pf->pad = pf->pad < 0 ? 0 : pf->pad;
 }
 
-
 void	plus_flag_pad(t_printf *pf, int nb_len)
 {
 	if (pf->flags & F_PLUS)
@@ -35,24 +34,4 @@ void	hash_flag_pad(t_printf *pf, int nb)
 		else
 			pf->pad--;	
 	}
-}
-
-/*
-** Treat all numbers as positive
-** If number is negative -> take out + and space flags and convert nbr
-** Indicate in structure that nbr is negative
-*/
-uintmax_t	treat_negaspos(t_printf *pf, intmax_t nb)
-{
-    uintmax_t new;
-
-	if (nb < 0)
-	{
-		(pf->flags &= ~F_PLUS) && (pf->flags &= ~F_SPACE);
-		new = -nb;
-		pf->neg = 1;
-	}
-	else
-		new = nb;
-	return (new);
 }

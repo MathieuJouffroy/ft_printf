@@ -7,9 +7,6 @@ t_conv g_conv[] =
 	{"dDi", &ft_castconvint},
 	{"uUoOxX", &ft_castconvuox}
 };
-	//	{"uUoOxX", &ft_castconvuox}
-	//{"cC", &c_conv}
-	//{"oOuUxX", castconvoux}
 	//{"cC", &pf_char},
 	//{"f", &float_conv},
 	//{"sS", &&pf_putstr},

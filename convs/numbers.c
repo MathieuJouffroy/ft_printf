@@ -1,5 +1,25 @@
 #include "../includes/ft_printf.h"
 
+/*
+** Treat all numbers as positive
+** If number is negative -> take out + and space flags and convert nbr
+** Indicate in structure that nbr is negative
+*/
+uintmax_t	treat_negaspos(t_printf *pf, intmax_t nb)
+{
+    uintmax_t new;
+
+	if (nb < 0)
+	{
+		(pf->flags &= ~F_PLUS) && (pf->flags &= ~F_SPACE);
+		new = -nb;
+		pf->neg = 1;
+	}
+	else
+		new = nb;
+	return (new);
+}
+
 void		int_conv(t_printf *pf, intmax_t nb)
 {
 	int		nb_len;
