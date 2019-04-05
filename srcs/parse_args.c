@@ -57,6 +57,7 @@ void	get_precision(t_printf *pf)
 		{
 			pf->format++;
 			pf->precision = va_arg(pf->ap, int);
+			pf->precision = MAX(pf->precision, -1);
         }
 		//(*pf->format == '-' || *pf->format == '+') ? pf->format++ : 0;
         while (*pf->format >= 48 && *pf->format <= 57)

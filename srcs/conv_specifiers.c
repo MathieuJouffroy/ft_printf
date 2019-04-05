@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conv_specifiers.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/05 15:43:08 by mjouffro          #+#    #+#             */
+/*   Updated: 2019/04/05 15:48:07 by mjouffro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
 /* -------------- PT_FUNCT -------------- */
@@ -7,8 +19,8 @@ t_conv g_conv[] =
 	{"dDi", &ft_castconvint},
 	{"uUoOxX", &ft_castconvuox},
 	{"cC%", &char_conv},
-	{"sS", &str_conv}
 };
+	//	{"sS", &str_conv}
 	//{"f", &float_conv},
 	//{"sS", &&pf_putstr},
 	//{"p", &print_ptr_add},

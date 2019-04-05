@@ -16,10 +16,7 @@ int main (void)
 	unsigned long int nb1;
 	char *str;
 
-	if (setlocale(LC_ALL, "") == NULL)
-        printf("error while setlocale()\n");
-	else
-		printf("set done\n");
+	(setlocale(LC_ALL, ""));
 	nb = 1222921996;
 	nb0 = 0;
 	nb2 = 2147483647;
@@ -47,12 +44,23 @@ int main (void)
 	printf("!%-32C!\n", (char)937);
 	ft_printf("!%-32C!\n", (char)937);*/
 
-	printf("42%% %c\n", 'R');
-	ft_printf("42%% %c\n", 'R');
+	printf("%-20.-1s!\n", "mothafucka");
+	printf("%-20.-1s!\n", "mothafucka");
 
-	printf("!%-32%! %c\n", 'R');
-	ft_printf("!%-32%! %c\n", 'R');
+	printf("%1.-1s!\n", "mothafucka");
+	printf("%1.-1s!\n", "mothafucka");
 	
+	printf("%20.-1s!\n", "mothafucka");
+	printf("%20.-1s!\n", "mothafucka");
+
+	printf("%-20.1s!\n", "mothafucka");
+	printf("%-20.1s!\n", "mothafucka");
+
+	printf("%20.1s!\n", "mothafucka");
+	printf("%20.1s!\n", "mothafucka");
+
+	printf("%1.10s!\n", "mothafucka");
+	printf("%1.10s!\n", "mothafucka");
 /* ----------------------------------- D_TEST ------------------------------- */
 	//printf("----- D_TEST -----\n");
 	//printf("hash        :%#d\n", nb);  //undefined behavior
