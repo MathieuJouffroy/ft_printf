@@ -6,13 +6,12 @@ t_conv g_conv[] =
 {
 	{"dDi", &ft_castconvint},
 	{"uUoOxX", &ft_castconvuox},
-	{"cC", &char_conv}
+	{"cC%", &char_conv},
+	{"sS", &str_conv}
 };
-	//{"cC", &pf_char},
 	//{"f", &float_conv},
 	//{"sS", &&pf_putstr},
 	//{"p", &print_ptr_add},
-	//{"%", &perct_conv}
 
 int		is_conv(t_printf *pf)
 {

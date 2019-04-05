@@ -102,11 +102,11 @@ int				parse_arg(t_printf *pf);
 **-------------------------------- CONVERSIONS -----------------------------
 */
 
+void		    ft_castconvint(t_printf *pf);
+void	        ft_castconvuox(t_printf *pf);
 int		        is_conv(t_printf *pf);
 int				conv_to_fct(t_printf *pf);
 int				get_conversion(t_printf *pf);
-void		    ft_castconvint(t_printf *pf);
-void	        ft_castconvuox(t_printf *pf);
 
 /*
 **-------------------------------- BUFF MANAGER ----------------------------
@@ -132,18 +132,15 @@ void			char_padding(t_printf *pf, char c);
 void				plus_flag_pad(t_printf *pf, int len);
 void				zero_flag_pad(t_printf *pf, int len);
 void				hash_flag_pad(t_printf *pf, int nb);
-uintmax_t	        treat_negaspos(t_printf *pf, intmax_t nb);
-
 
 /*
 **--------------------------------- NUMBERS -------------------------------
 */
 
-uintmax_t	    treat_negaspos(t_printf *pf, intmax_t nb);
-char		    *ft_lltoa_base(uintmax_t nb, intmax_t base);
 void			int_conv(t_printf *pf, intmax_t nb);
 void			uint_conv(t_printf *pf, uintmax_t nb);
 void		    ox_conv(t_printf *pf, uintmax_t nb);
+uintmax_t	    treat_negaspos(t_printf *pf, intmax_t nb);
 
 /*
 **---------------------------- CHAR & STRINGS -----------------------------
@@ -151,23 +148,25 @@ void		    ox_conv(t_printf *pf, uintmax_t nb);
 
 void		char_conv(t_printf *pf);
 void        wchar_conv(t_printf *pf);
+void	    str_conv(t_printf *pf);
 
 /*
 **----------------------------------- UTILS -------------------------------
 */
 
-size_t			ft_strlen(const char *str);
 void			*ft_memset(void *s, int c, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_bzero(void *s, size_t n);
 void			ft_putstr_fd(char const *s, int fd);
-char			*ft_strcpy(char *dest, const char *src);
-char			*to_upper(char *str);
-intmax_t		ft_atoi(char *s);
 int		        ft_nbrlen(uintmax_t nb, intmax_t base);
 int				find_flag(char *str, char c);
+char			*ft_strcpy(char *dest, const char *src);
+char			*to_upper(char *str);
 char		    find_conv(char *str, char c);
 char	        *to_upper(char *str);
+char		    *ft_lltoa_base(uintmax_t nb, intmax_t base);
 char		    *ft_get_wchar(wint_t wc);
 size_t		    w_charlen(wint_t wc);
+size_t			ft_strlen(const char *str);
+intmax_t		ft_atoi(char *s);
 #endif

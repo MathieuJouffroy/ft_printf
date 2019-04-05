@@ -8,7 +8,7 @@ void    char_conv(t_printf *pf)
    	(pf->flags & F_SPACE) ? (pf->flags &= ~F_SPACE) : 0;
 	if (!((pf->flags & LM_LONG) || (pf->conv == 'C')))
 	{
-		c = va_arg(pf->ap, int);
+		c = (pf->conv == 'c') ? va_arg(pf->ap, int) : '%';
     	pf->precision = 0;
     	pf->pad = pf->min_len ? --pf->min_len : 0;
 		if (!(pf->flags & F_MINUS))
@@ -34,7 +34,8 @@ void    wchar_conv(t_printf *pf)
 	(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 }
 
-/*void	str_conv(t_printf *pf)
+
+void	str_conv(t_printf *pf)
 {
 
 }
@@ -42,4 +43,34 @@ void    wchar_conv(t_printf *pf)
 void	wstr_conv(t_printf *pf)
 {
 
-}*/
+}
+
+
+
+
+int		s_conv(t_printf *pf, char *str)
+{
+	int		len;
+	int		min;
+
+	len = str ? ft_strlen(str) : 6;
+	if (pf->precision && pf->precision < len)
+		len = (pf->precision == -1) ? 0 : pf->precision;
+	min = pf->min_length ? pf->min_length - len : 0;
+	if (pf->flags & F_MINUS)
+	{
+		str ? handle_buff(pf, str, 0, len) : handle_buff(pf, "(null)", 0, len);
+		min_padding(pf, ' ', min);
+	}
+	else
+	{
+		(pf->flags & F_ZERO) ? min_padding(pf, '0', min) :
+		min_padding(pf, ' ', min);
+		str ? handle_buff(pf, str, 0, len) : handle_buff(pf, "(null)", 0, len);
+	}
+	return (1);
+}
+
+
+
+*/

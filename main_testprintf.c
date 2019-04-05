@@ -42,10 +42,16 @@ int main (void)
 	ft_printf("{%-5.8c}\n", 'h');
 	printf("{%05.8c}\n", 'h');
 	ft_printf("{%05.8c}\n", 'h');*/
-	printf("42%lc42\n", (char)12150);
+	/*printf("42%lc42\n", (char)12150);
 	ft_printf("42%lc42\n", (char)128150);
 	printf("!%-32C!\n", (char)937);
-	ft_printf("!%-32C!\n", (char)937);
+	ft_printf("!%-32C!\n", (char)937);*/
+
+	printf("42%% %c\n", 'R');
+	ft_printf("42%% %c\n", 'R');
+
+	printf("!%-32%! %c\n", 'R');
+	ft_printf("!%-32%! %c\n", 'R');
 	
 /* ----------------------------------- D_TEST ------------------------------- */
 	//printf("----- D_TEST -----\n");
