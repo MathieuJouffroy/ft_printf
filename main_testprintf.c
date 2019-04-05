@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "includes/ft_printf.h"
+#include <locale.h>
 
 int main (void)
 {
@@ -15,6 +16,10 @@ int main (void)
 	unsigned long int nb1;
 	char *str;
 
+	if (setlocale(LC_ALL, "") == NULL)
+        printf("error while setlocale()\n");
+	else
+		printf("set done\n");
 	nb = 1222921996;
 	nb0 = 0;
 	nb2 = 2147483647;
@@ -27,7 +32,7 @@ int main (void)
 
 	//printf("{% 5.c}\n", 0);
 	//ft_printf("{% 5.c}\n", 0);
-	printf("{%5c}\n", 0);
+	/*printf("{%5c}\n", 0);
 	ft_printf("{%5c}\n", 0);
 	printf("{% 3c}\n", 0);
 	ft_printf("{% 3c}\n", 0);
@@ -36,11 +41,11 @@ int main (void)
 	printf("{%-5.8c}\n", 'h');
 	ft_printf("{%-5.8c}\n", 'h');
 	printf("{%05.8c}\n", 'h');
-	ft_printf("{%05.8c}\n", 'h');
-	printf("42%lc42\n", (char)128150);
+	ft_printf("{%05.8c}\n", 'h');*/
+	printf("42%lc42\n", (char)12150);
 	ft_printf("42%lc42\n", (char)128150);
-	printf("%lc\n", (char)128150);
-	ft_printf("%lc\n", (char)128150);
+	printf("!%-32C!\n", (char)937);
+	ft_printf("!%-32C!\n", (char)937);
 	
 /* ----------------------------------- D_TEST ------------------------------- */
 	//printf("----- D_TEST -----\n");

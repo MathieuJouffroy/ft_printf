@@ -18,7 +18,7 @@
 
 char		*ft_get_wchar(wint_t wc)
 {
-    static char	tab[4];
+    static char	tab[5];
 
 
 	ft_bzero(tab, 5);

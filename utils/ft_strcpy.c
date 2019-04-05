@@ -1,15 +1,7 @@
 #include "../includes/ft_printf.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	int i;
-
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	ft_memcpy((void*)dst, (const void*)src, ft_strlen(src) + 1);
+	return (dst);
 }
