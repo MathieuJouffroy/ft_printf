@@ -44,33 +44,3 @@ void	wstr_conv(t_printf *pf)
 {
 
 }
-
-
-
-
-int		s_conv(t_printf *pf, char *str)
-{
-	int		len;
-	int		min;
-
-	len = str ? ft_strlen(str) : 6;
-	if (pf->precision && pf->precision < len)
-		len = (pf->precision == -1) ? 0 : pf->precision;
-	min = pf->min_length ? pf->min_length - len : 0;
-	if (pf->flags & F_MINUS)
-	{
-		str ? handle_buff(pf, str, 0, len) : handle_buff(pf, "(null)", 0, len);
-		min_padding(pf, ' ', min);
-	}
-	else
-	{
-		(pf->flags & F_ZERO) ? min_padding(pf, '0', min) :
-		min_padding(pf, ' ', min);
-		str ? handle_buff(pf, str, 0, len) : handle_buff(pf, "(null)", 0, len);
-	}
-	return (1);
-}
-
-
-
-*/
