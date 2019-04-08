@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:41:28 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 19:33:22 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/08 20:09:29 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ size_t		wslen_tobuff(wchar_t *s, int wslen)
 		cnt += c_len;
 		if (cnt <= tmp)
 			to_buff += c_len;
-		s++;
 		wslen -= c_len;
+		s++;
 	}
 	return (to_buff);
 }

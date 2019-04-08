@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 19:32:47 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 19:32:49 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/08 20:07:57 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int		ft_printf(const char *format, ...)
 			pf.format++;
 		}
 	}
-    return (end(&pf));
+	end(&pf);
+    return (pf.ret);
 }
 
 int		ft_dprintf(int fd, const char *format, ...)
@@ -65,7 +66,8 @@ int		ft_dprintf(int fd, const char *format, ...)
 			pf.format++;
 		}
 	}
-    return (end(&pf));
+	end(&pf);
+    return (pf.ret);
 }
 
 void	reset_struct(t_printf *pf)

@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 18:49:15 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/08 20:08:27 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,17 @@ typedef struct	s_printf
 }				t_printf;
 
 int		ft_printf(const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
 
 typedef  void(*t_f_conv)(t_printf*);
-
 
 typedef struct	s_conv
 {
 	char		*c;
 	t_f_conv	funct;
 }				t_conv;
+
+void	reset_struct(t_printf *pf);
 
 /*
 **---------------------------------- PARSING -------------------------------
@@ -124,11 +126,11 @@ int				get_conversion(t_printf *pf);
 **-------------------------------- BUFF MANAGER ----------------------------
 */
 
-void	reset_struct(t_printf *pf);
 void	reset_buff(t_printf *pf);
 void	check_buff(t_printf *pf);
-int		buffer(t_printf *pf, char *str, int len);
-int		end(t_printf *pf);
+void	buffer(t_printf *pf, char *str, int len);
+void	wstr_tobuff(t_printf *pf, wchar_t *str, int len);
+void	end(t_printf *pf);
 /*
 **---------------------------------- PADDING -------------------------------
 */
@@ -144,7 +146,6 @@ void			char_padding(t_printf *pf, char c);
 void				plus_flag_pad(t_printf *pf, int len);
 void				zero_flag_pad(t_printf *pf, int len);
 void				hash_flag_pad(t_printf *pf, int nb);
-void	            wchar_pad(t_printf *pf, wchar_t *str, int len);
 
 /*
 **--------------------------------- NUMBERS -------------------------------
@@ -163,7 +164,6 @@ void		char_conv(t_printf *pf);
 void        wchar_conv(t_printf *pf);
 void	    str_conv(t_printf *pf);
 void	    wstr_conv(t_printf *pf);
-void	    wstr_tobuff(t_printf *pf, wchar_t *str, int len);
 size_t		wslen_tobuff(wchar_t *s, int wslen);
 
 /*

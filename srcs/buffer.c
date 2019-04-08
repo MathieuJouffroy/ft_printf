@@ -1,11 +1,11 @@
 #include "../includes/ft_printf.h"
 
-int		end(t_printf *pf)
+void		end(t_printf *pf)
 {
 	pf->buff[pf->buff_i] = '\0';
 	write(pf->fd, pf->buff, pf->buff_i);
+	pf->ret +=  pf->buff_i;
 	va_end(pf->ap);
-	return (pf->ret + pf->buff_i);
 }
 
 void	reset_buff(t_printf *pf)
@@ -22,7 +22,7 @@ void	check_buff(t_printf *pf)
 		reset_buff(pf);
 }
 
-int		buffer(t_printf *pf, char *str, int len)
+void		buffer(t_printf *pf, char *str, int len)
 {
 	int i;
 
@@ -37,7 +37,6 @@ int		buffer(t_printf *pf, char *str, int len)
 	else
 		while (len--)
 			pf->buff[pf->buff_i++] = str[i++];
-	return (1);
 }
 
 void		wstr_tobuff(t_printf *pf, wchar_t *str, int len)
@@ -49,7 +48,7 @@ void		wstr_tobuff(t_printf *pf, wchar_t *str, int len)
 	{
 		i = w_charlen(*str);
 		buffer(pf, ft_get_wchar(*str), i);
-		str++;
 		len-= i;
+		str++;
 	}
 }
