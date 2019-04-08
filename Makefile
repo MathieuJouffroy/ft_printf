@@ -31,7 +31,6 @@ UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)ft_wcharlen.c 		\
 				$(UTILSDIR)ft_wstrlen.c 		\
 				$(UTILSDIR)ft_get_wchar.c 		\
-				$(UTILSDIR)ft_get_minwchar.c 	\
 
 
 UTIOBJ	= $(UTILS:.c=.o)

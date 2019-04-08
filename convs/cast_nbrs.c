@@ -39,5 +39,8 @@ void		        ft_castconvuox(t_printf *pf)
 		nb = ((uintmax_t)va_arg(pf->ap, size_t));
 	else
 		nb = (uintmax_t)va_arg(pf->ap, unsigned int);
-	(pf->conv == 'u' || pf->conv == 'U') ? uint_conv(pf, nb) : ox_conv(pf, nb);
+	if (pf->conv == 'u' || pf->conv == 'U' || pf->conv == 'b' || pf->conv == 'B')  
+		uint_conv(pf, nb);
+	else
+		ox_conv(pf, nb);
 }

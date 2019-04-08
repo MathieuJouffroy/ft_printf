@@ -17,7 +17,7 @@ int main (void)
 	char *str;
 
 	(setlocale(LC_ALL, ""));
-	nb = 1222921996;
+	nb = 42;
 	nb0 = 0;
 	nb2 = 2147483647;
 	nbmax = 9223372036854775807;
@@ -25,7 +25,7 @@ int main (void)
 	unb = 4294967295;
 	nbo = -105192774;
 	
-	str = "salut";
+	str = L"(╯°□°)╯︵ ┻━┻ ︵ ╯(°□° ╯) says hello";
 
 	//printf("{% 5.c}\n", 0);
 	//ft_printf("{% 5.c}\n", 0);
@@ -44,28 +44,32 @@ int main (void)
 	printf("!%-32C!\n", (char)937);
 	ft_printf("!%-32C!\n", (char)937);*/
 
-   //ft_printf("%b:\n", nb);
+   //ft_printf("%10.15b:\n", nb);
 
 	//printf("%-20.-15s!\n", "mothafucka");
 	//ft_printf("%-20.-15s!\n", "mothafucka");
 
-	printf("%1.1s!\n", "mothafucka");
-	ft_printf("%1.1s!\n", "mothafucka");
+	/*printf("%1.1ls!\n", (wchar_t *)str);
+	ft_printf("%1.1ls!\n", (wchar_t *)str);
+
+	printf("%20.1c!\n", 'w');
+	ft_printf("%20.1c!\n", 'w');
 	
-	printf("%20.1s!\n", "mothafucka");
-	ft_printf("%20.1s!\n", "mothafucka");
+	printf("%20.1ls!\n", (wchar_t *)str);
+	ft_printf("%20.1ls!\n", (wchar_t *)str);
 
-	printf("%20.15s!\n", "mothafucka");
-	ft_printf("%20.15s!\n", "mothafucka");
+	printf("%20.15ls!\n", (wchar_t *)str);
+	ft_printf("%20.15ls!\n", (wchar_t *)str);
 
-	printf("%-20.1s!\n", "mothafucka");
-	ft_printf("%-20.1s!\n", "mothafucka");
+	printf("%20.1ls!\n", (wchar_t *)str);
+	ft_printf("%20.1ls!\n", (wchar_t *)str);*/
 
-	printf("%20.1s!\n", "mothafucka");
-	ft_printf("%20.1s!\n", "mothafucka");
+	//printf("the string is : %20.60ls!\n", (wchar_t *)str);
+	//ft_printf("the string is : %20.60ls!\n", (wchar_t *)str);
 
-	printf("%1.10s!\n", "mothafucka");
-	ft_printf("%1.10s!\n", "mothafucka");
+	printf("%10.13ls!\n", (wchar_t *)str);
+	ft_printf("%10.13ls!\n", (wchar_t *)str);
+	//printf("\nlen of wstr is %zu\n", ft_wstrlen("(╯°□°)!"));
 /* ----------------------------------- D_TEST ------------------------------- */
 	//printf("----- D_TEST -----\n");
 	//printf("hash        :%#d\n", nb);  //undefined behavior

@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 16:08:57 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/08 18:49:15 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void			char_padding(t_printf *pf, char c);
 void				plus_flag_pad(t_printf *pf, int len);
 void				zero_flag_pad(t_printf *pf, int len);
 void				hash_flag_pad(t_printf *pf, int nb);
+void	            wchar_pad(t_printf *pf, wchar_t *str, int len);
 
 /*
 **--------------------------------- NUMBERS -------------------------------
@@ -163,6 +164,7 @@ void        wchar_conv(t_printf *pf);
 void	    str_conv(t_printf *pf);
 void	    wstr_conv(t_printf *pf);
 void	    wstr_tobuff(t_printf *pf, wchar_t *str, int len);
+size_t		wslen_tobuff(wchar_t *s, int wslen);
 
 /*
 **----------------------------------- UTILS -------------------------------
@@ -180,7 +182,6 @@ char		    find_conv(char *str, char c);
 char	        *to_upper(char *str);
 char		    *ft_lltoa_base(uintmax_t nb, intmax_t base);
 char		    *ft_get_wchar(wint_t wc);
-int		        ft_get_minwchar(t_printf *pf, wchar_t *str, int len);
 size_t		    w_charlen(wint_t wc);
 size_t			ft_strlen(const char *str);
 size_t	        ft_wstrlen(wchar_t *s);

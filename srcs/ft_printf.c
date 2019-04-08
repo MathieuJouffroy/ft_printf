@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/08 19:32:47 by mjouffro          #+#    #+#             */
+/*   Updated: 2019/04/08 19:32:49 by mjouffro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
 int		ft_printf(const char *format, ...)
@@ -54,4 +66,15 @@ int		ft_dprintf(int fd, const char *format, ...)
 		}
 	}
     return (end(&pf));
+}
+
+void	reset_struct(t_printf *pf)
+{
+	pf->flags = 0;
+	pf->precision = 0;
+	pf->min_len = 0;
+	pf->neg = 0;
+	pf->base = 0;
+	pf->conv = 0;
+	pf->pad = 0;
 }

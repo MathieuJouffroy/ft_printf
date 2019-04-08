@@ -1,18 +1,7 @@
 #include "../includes/ft_printf.h"
 
-void	reset_struct(t_printf *pf)
-{
-	pf->flags = 0;
-	pf->precision = 0;
-	pf->min_len = 0;
-	pf->neg = 0;
-	pf->base = 0;
-	pf->conv = 0;
-}
-
 int		end(t_printf *pf)
 {
-	//va_end(pf->ap);
 	pf->buff[pf->buff_i] = '\0';
 	write(pf->fd, pf->buff, pf->buff_i);
 	va_end(pf->ap);
@@ -49,4 +38,18 @@ int		buffer(t_printf *pf, char *str, int len)
 		while (len--)
 			pf->buff[pf->buff_i++] = str[i++];
 	return (1);
+}
+
+void		wstr_tobuff(t_printf *pf, wchar_t *str, int len)
+{
+	int i;
+	 
+	i = 0;
+	while (len > 0)
+	{
+		i = w_charlen(*str);
+		buffer(pf, ft_get_wchar(*str), i);
+		str++;
+		len-= i;
+	}
 }
