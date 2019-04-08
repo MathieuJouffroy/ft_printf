@@ -44,23 +44,28 @@ int main (void)
 	printf("!%-32C!\n", (char)937);
 	ft_printf("!%-32C!\n", (char)937);*/
 
-	printf("%-20.-1s!\n", "mothafucka");
-	printf("%-20.-1s!\n", "mothafucka");
+   //ft_printf("%b:\n", nb);
 
-	printf("%1.-1s!\n", "mothafucka");
-	printf("%1.-1s!\n", "mothafucka");
+	//printf("%-20.-15s!\n", "mothafucka");
+	//ft_printf("%-20.-15s!\n", "mothafucka");
+
+	printf("%1.1s!\n", "mothafucka");
+	ft_printf("%1.1s!\n", "mothafucka");
 	
-	printf("%20.-1s!\n", "mothafucka");
-	printf("%20.-1s!\n", "mothafucka");
+	printf("%20.1s!\n", "mothafucka");
+	ft_printf("%20.1s!\n", "mothafucka");
+
+	printf("%20.15s!\n", "mothafucka");
+	ft_printf("%20.15s!\n", "mothafucka");
 
 	printf("%-20.1s!\n", "mothafucka");
-	printf("%-20.1s!\n", "mothafucka");
+	ft_printf("%-20.1s!\n", "mothafucka");
 
 	printf("%20.1s!\n", "mothafucka");
-	printf("%20.1s!\n", "mothafucka");
+	ft_printf("%20.1s!\n", "mothafucka");
 
 	printf("%1.10s!\n", "mothafucka");
-	printf("%1.10s!\n", "mothafucka");
+	ft_printf("%1.10s!\n", "mothafucka");
 /* ----------------------------------- D_TEST ------------------------------- */
 	//printf("----- D_TEST -----\n");
 	//printf("hash        :%#d\n", nb);  //undefined behavior
@@ -74,8 +79,10 @@ int main (void)
 	//printf("%%010d      :%010d\n", nb);
 	//printf("%%010.5d    :%010.5d\n", nb);0
 
-/*
-	printf("\n\n%- 30.0d:\n", -nb);
+	//printf("\n\n%- 30.*d:\n", 1000, nb);
+   	//ft_printf("%- 30.*d:\n", 1000, nb);
+
+/*	printf("\n\n%- 30.0d:\n", -nb);
     ft_printf("%- 30.0d:\n", -nb);
 
 	ft_printf("^.^/%060.48zd^.^/\n", (long)nb0);
@@ -259,6 +266,6 @@ int main (void)
 
 	printf("\n\n^.^/%#-o^.^/:\n", nbo);
     ft_printf("^.^/%#-o^.^/:\n", nbo);
-	*/
+*/
     return (0);
 }

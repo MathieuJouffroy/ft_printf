@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:43:08 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/05 15:48:07 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/08 14:45:52 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 t_conv g_conv[] =
 {
 	{"dDi", &ft_castconvint},
-	{"uUoOxX", &ft_castconvuox},
+	{"uUoOxXbB", &ft_castconvuox},
 	{"cC%", &char_conv},
+	{"sS", &str_conv}
 };
 	//	{"sS", &str_conv}
 	//{"f", &float_conv},

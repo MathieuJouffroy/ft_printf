@@ -52,12 +52,13 @@ void	get_precision(t_printf *pf)
 	if (*pf->format == '.')
 	{
 		pf->format++;
-		pf->precision = MAX(ft_atoi(pf->format), -1);
+		pf->precision = MAX(ft_atoi(pf->format), 0);
+		//pf->precision = MAX(ft_atoi(pf->format), -1);
     	if (*pf->format == '*')
 		{
 			pf->format++;
-			pf->precision = va_arg(pf->ap, int);
-			pf->precision = MAX(pf->precision, -1);
+			pf->precision = va_arg(pf->ap, long int);
+			pf->precision = MAX(pf->precision, 0);
         }
 		//(*pf->format == '-' || *pf->format == '+') ? pf->format++ : 0;
         while (*pf->format >= 48 && *pf->format <= 57)

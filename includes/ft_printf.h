@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/05 15:42:55 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/08 16:08:57 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ uintmax_t	    treat_negaspos(t_printf *pf, intmax_t nb);
 void		char_conv(t_printf *pf);
 void        wchar_conv(t_printf *pf);
 void	    str_conv(t_printf *pf);
+void	    wstr_conv(t_printf *pf);
+void	    wstr_tobuff(t_printf *pf, wchar_t *str, int len);
 
 /*
 **----------------------------------- UTILS -------------------------------
@@ -178,7 +180,9 @@ char		    find_conv(char *str, char c);
 char	        *to_upper(char *str);
 char		    *ft_lltoa_base(uintmax_t nb, intmax_t base);
 char		    *ft_get_wchar(wint_t wc);
+int		        ft_get_minwchar(t_printf *pf, wchar_t *str, int len);
 size_t		    w_charlen(wint_t wc);
 size_t			ft_strlen(const char *str);
+size_t	        ft_wstrlen(wchar_t *s);
 intmax_t		ft_atoi(char *s);
 #endif
