@@ -67,8 +67,8 @@ int main (void)
 	//printf("the string is : %20.60ls!\n", (wchar_t *)str);
 	//ft_printf("the string is : %20.60ls!\n", (wchar_t *)str);
 
-	printf("%10.13ls!\n", (wchar_t *)str);
-	ft_printf("%10.13ls!\n", (wchar_t *)str);
+	//printf("%10.13ls!\n", (wchar_t *)str);
+	//ft_printf("%10.13ls!\n", (wchar_t *)str);
 	//printf("\nlen of wstr is %zu\n", ft_wstrlen("(╯°□°)!"));
 /* ----------------------------------- D_TEST ------------------------------- */
 	//printf("----- D_TEST -----\n");
@@ -271,5 +271,35 @@ int main (void)
 	printf("\n\n^.^/%#-o^.^/:\n", nbo);
     ft_printf("^.^/%#-o^.^/:\n", nbo);
 */
+/* ----------------------------------- P_TEST ------------------------------- */
+
+	//printf("\n%42p:\n", 0x0);
+    //ft_printf("%42p:\n", 0x0);
+
+	//printf("\n%42p:\n", 0x1ffaf21c);
+    //ft_printf("%42p:\n", 0x1ffaf21c);
+
+	//printf("ret is %d\n", printf("\033[31m"));
+	//printf("ret is %d\n", printf("\033[31mLe fichier\033[32m%s\033[34m est \033[37m cool!\n", " popopo "));
+	//ft_printf("\033[31mLe fichier\033[32m%s\033[34m est \033[37m cool!\n", " popopo ");
+	//ft_printf("{{}red}Le {redo}fichier{green %s{blue}{red}{yellow}{blue} est {...} cool{!\n", " popopo ");
+	//printf("{red}Le fichier{green}%s{blue} est {white}cool!\n", " popopo ");
+	
+/*	printf("%###.0o%#.O \n", 0, 0);
+	ft_printf("%###.0o%#.O \n", 0, 0);
+	
+	printf("%+16d\n", 0);
+	ft_printf("%+16d\n", 0);
+
+	printf("%#-2o\n", 0);
+	ft_printf("%#-2o\n", 0);
+
+	printf("%#25o!\n", 0);
+	ft_printf("%#25o!\n", 0);*/
+
+	printf("Coucou %.0s\n%s\n", "hi", "coco");
+	//ft_printf("Coucou %.0s\n%s\n", "hi", "coco");
+
+	ft_printf("%d hoho %d!\n", 0, 54);
     return (0);
 }

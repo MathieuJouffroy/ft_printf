@@ -24,6 +24,7 @@ UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)ft_memset.c			\
 				$(UTILSDIR)ft_putstr_fd.c		\
 				$(UTILSDIR)ft_strcpy.c			\
+				$(UTILSDIR)ft_strncmp.c			\
 				$(UTILSDIR)ft_strlen.c			\
 				$(UTILSDIR)ft_nbrlen.c			\
 				$(UTILSDIR)ft_lltoa_base.c		\
@@ -38,6 +39,7 @@ UTIOBJ	= $(UTILS:.c=.o)
 CONV	=		$(CONVDIR)cast_nbrs.c			\
 				$(CONVDIR)numbers.c				\
 				$(CONVDIR)char_strings.c		\
+				$(CONVDIR)ptr.c					\
 
 CONVOBJ	= $(CONV:.c=.o)
 

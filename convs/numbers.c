@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:43:04 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 17:12:39 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/09 19:30:29 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		int_conv(t_printf *pf, intmax_t nb)
 	sp_pad = pf->min_len ? (pf->min_len - pf->pad - nb_len) : 0;
 	if (pf->neg || pf->flags & F_PLUS || pf->flags & F_SPACE)	
 		sp_pad--;
-	((pf->precision == -1) || sp_pad < 0) ? (sp_pad = 0) : 0;
+	//((pf->precision == -1) || sp_pad < 0) ? (sp_pad = 0) : 0;
 	!(pf->flags & F_MINUS) ? min_padding(pf, ' ', sp_pad) : 0;
 	plus_flag_pad(pf, nb_len);
 	(pf->flags & F_SPACE) ? char_padding(pf, ' ') : 0;
@@ -70,7 +70,7 @@ void			uint_conv(t_printf *pf, uintmax_t nb)
 	zero_flag_pad(pf, nb_len);
 	sp_pad = pf->min_len ? (pf->min_len - pf->pad - nb_len) : 0;
 	(pf->flags & F_PLUS || pf->flags & F_SPACE) ? sp_pad-- : 0;
-	((pf->precision == -1) || sp_pad < 0) ? (sp_pad = 0) : 0;
+	//((pf->precision == -1) || sp_pad < 0) ? (sp_pad = 0) : 0;
 	!(pf->flags & F_MINUS) ? min_padding(pf, ' ', sp_pad) : 0;
 	min_padding(pf, '0', pf->pad);
 	buffer(pf, ft_lltoa_base(nb, pf->base), nb_len);
@@ -84,15 +84,16 @@ void		ox_conv(t_printf *pf, uintmax_t nb)
 
 	nb_len = ft_nbrlen(nb, pf->base);
     pf->precision ? (pf->flags &= ~F_ZERO) : 0;
-	if (pf->precision == -1 && nb == 0)
+	//sp_pad = pf->min_len ? (pf->min_len - pf->pad - nb_len) : 0;
+	if ((pf->precision == -1 && nb == 0) || (nb == 0 && pf->flags & F_HASH && (pf->conv == 'o' || pf->conv == 'O')))
 		nb_len = 0;
 	zero_flag_pad(pf, nb_len);
 	sp_pad = pf->min_len ? (pf->min_len - pf->pad - nb_len) : 0;
+	//sp_pad =  (nb == 0 && pf->flags & F_HASH) ? --sp_pad : sp_pad;
 	if (pf->conv == 'x' || pf->conv == 'X')
 		((pf->flags & F_HASH) && (nb != 0)) ? sp_pad -= 2 : 0;
 	else
-		((pf->flags & F_HASH) && (nb_len >= pf->precision) && (nb != 0)) ? sp_pad-- : 0;
-	((pf->precision == -1) || sp_pad < 0) ? (sp_pad = 0) : 0;
+		((pf->flags & F_HASH) && (nb_len >= pf->precision)) ? --sp_pad : 0;
 	!(pf->flags & F_MINUS) ? min_padding(pf, ' ', sp_pad) : 0;
 	hash_flag_pad(pf, nb);
 	min_padding(pf, '0', pf->pad);

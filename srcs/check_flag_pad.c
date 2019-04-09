@@ -24,7 +24,7 @@ void	plus_flag_pad(t_printf *pf, int nb_len)
 	}
 }
 
-void	hash_flag_pad(t_printf *pf, int nb)
+/*void	hash_flag_pad(t_printf *pf, int nb)
 {
 	if ((pf->flags & F_HASH) && nb != 0)
 	{
@@ -33,5 +33,25 @@ void	hash_flag_pad(t_printf *pf, int nb)
 			pf->pad = pf->precision ? pf->pad : pf->pad - 2;
 		else
 			pf->pad--;	
+	}
+}*/
+
+void	hash_flag_pad(t_printf *pf, int nb)
+{
+	if (pf->conv == 'x' || pf->conv == 'X')
+	{
+		if ((pf->flags & F_HASH) && nb != 0)
+		{
+			hash_padding(pf);
+			pf->pad = pf->precision ? pf->pad : pf->pad - 2;
+		}
+	}
+	else if (pf->conv == 'o' || pf->conv == 'O')
+	{
+		if ((pf->flags & F_HASH))
+		{
+			hash_padding(pf);
+			pf->pad--;
+		}
 	}
 }

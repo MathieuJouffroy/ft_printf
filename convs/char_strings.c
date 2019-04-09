@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:41:28 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 20:09:29 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/09 19:56:52 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,15 @@ void	str_conv(t_printf *pf)
 	{
 		str = va_arg(pf->ap, char*);
 		len = str ? ft_strlen(str) : 6; // 6 for length of (null)
+		printf("str is %s\n", str);
+		printf("strlen is %d\n", len);
 		if (pf->precision && pf->precision < len)
 			len = pf->precision;
 		pf->pad = pf->min_len ? pf->min_len - len : 0;
 		!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 		str ? buffer(pf, str, len) : buffer(pf, "(null)", len);
 		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
+		printf("buf is %s\n", pf->buff);
 	}
 	else
 		wstr_conv(pf);

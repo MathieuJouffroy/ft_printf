@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 20:08:27 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/09 17:39:18 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@
 **----------------------------------- COLORS -------------------------------
 */
 
-# define C_NOCOLOR		"\033[0m"
+# define C_BOLD		    "\033[1m"
+# define C_UNDERLINE    "\033[4m"
 # define C_BLACK		"\033[30m"
 # define C_RED			"\033[31m"
 # define C_GREEN		"\033[32m"
@@ -105,6 +106,8 @@ typedef struct	s_conv
 }				t_conv;
 
 void	reset_struct(t_printf *pf);
+void    color_or_char(t_printf *pf);
+char			*color(t_printf *pf);
 
 /*
 **---------------------------------- PARSING -------------------------------
@@ -121,6 +124,7 @@ void	        ft_castconvuox(t_printf *pf);
 int		        is_conv(t_printf *pf);
 int				conv_to_fct(t_printf *pf);
 int				get_conversion(t_printf *pf);
+void		    print_ptr_add(t_printf *pf);
 
 /*
 **-------------------------------- BUFF MANAGER ----------------------------
@@ -186,4 +190,5 @@ size_t		    w_charlen(wint_t wc);
 size_t			ft_strlen(const char *str);
 size_t	        ft_wstrlen(wchar_t *s);
 intmax_t		ft_atoi(char *s);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 #endif
