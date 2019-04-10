@@ -297,9 +297,13 @@ int main (void)
 	printf("%#25o!\n", 0);
 	ft_printf("%#25o!\n", 0);*/
 
-	printf("Coucou %.0s\n%s\n", "hi", "coco");
-	//ft_printf("Coucou %.0s\n%s\n", "hi", "coco");
+//	ft_printf("Coucou %.0s\n", "hi");
 
-	ft_printf("%d hoho %d!\n", 0, 54);
+	printf("%04.2%\n");
+	ft_printf("%04.2%\n");
+
+	printf("%4.2%\n");
+	ft_printf("%4.2%\n");
+//	ft_printf("%d hoho %d!\n", 0, 54);
     return (0);
 }

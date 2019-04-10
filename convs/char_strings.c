@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:41:28 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/09 19:56:52 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:58:54 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void    char_conv(t_printf *pf)
 		c = (pf->conv == 'c') ? va_arg(pf->ap, int) : '%';
     	pf->precision = 0;
     	pf->pad = pf->min_len ? --pf->min_len : 0;
-		!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
+		(!(pf->flags & F_MINUS)) && (!(pf->flags & F_ZERO)) ? min_padding(pf, ' ', pf->pad) : 0;
+		((pf->conv == '%') && (pf->flags & F_ZERO)) ? min_padding(pf, '0', pf->pad) : 0;
 		char_padding(pf, c);
-		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
+		(pf->flags & F_MINUS) && (!(pf->flags & F_ZERO)) ? min_padding(pf, ' ', pf->pad) : 0;
 	}
 	else
 		wchar_conv(pf);
@@ -49,21 +50,18 @@ void	str_conv(t_printf *pf)
 	char *str;
 	int len;
 
-	(pf->flags & F_PLUS) ? (pf->flags &= ~F_PLUS) : 0;
-   	(pf->flags & F_SPACE) ? (pf->flags &= ~F_SPACE) : 0; 
+	//(pf->flags & F_PLUS) ? (pf->flags &= ~F_PLUS) : 0;
+   	//(pf->flags & F_SPACE) ? (pf->flags &= ~F_SPACE) : 0; 
 	if (!((pf->flags & LM_LONG) || (pf->conv == 'S')))
 	{
 		str = va_arg(pf->ap, char*);
 		len = str ? ft_strlen(str) : 6; // 6 for length of (null)
-		printf("str is %s\n", str);
-		printf("strlen is %d\n", len);
 		if (pf->precision && pf->precision < len)
-			len = pf->precision;
+			len = (pf->precision == -1) ? 0 : pf->precision;
 		pf->pad = pf->min_len ? pf->min_len - len : 0;
 		!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 		str ? buffer(pf, str, len) : buffer(pf, "(null)", len);
 		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
-		printf("buf is %s\n", pf->buff);
 	}
 	else
 		wstr_conv(pf);
