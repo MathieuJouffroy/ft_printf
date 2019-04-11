@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_flag_pad.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/11 20:15:31 by mjouffro          #+#    #+#             */
+/*   Updated: 2019/04/11 21:03:21 by mjouffro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
 void		zero_flag_pad(t_printf *pf, int nb_len)
@@ -5,7 +17,7 @@ void		zero_flag_pad(t_printf *pf, int nb_len)
 	if (pf->flags & F_ZERO)
 	{
 		pf->pad = pf->precision ? pf->precision - nb_len :
-				(pf->min_len - nb_len - pf->neg);
+			(pf->min_len - nb_len - pf->neg);
 		if ((pf->flags & F_SPACE) && (pf->precision == 0))
 			pf->pad--;
 	}
@@ -14,7 +26,7 @@ void		zero_flag_pad(t_printf *pf, int nb_len)
 	pf->pad = pf->pad < 0 ? 0 : pf->pad;
 }
 
-void	plus_flag_pad(t_printf *pf, int nb_len)
+void		plus_flag_pad(t_printf *pf, int nb_len)
 {
 	if (pf->flags & F_PLUS)
 	{
@@ -24,19 +36,7 @@ void	plus_flag_pad(t_printf *pf, int nb_len)
 	}
 }
 
-/*void	hash_flag_pad(t_printf *pf, int nb)
-{
-	if ((pf->flags & F_HASH) && nb != 0)
-	{
-		hash_padding(pf);
-		if (pf->conv == 'x' || pf->conv == 'X')
-			pf->pad = pf->precision ? pf->pad : pf->pad - 2;
-		else
-			pf->pad--;	
-	}
-}*/
-
-void	hash_flag_pad(t_printf *pf, int nb)
+void		hash_flag_pad(t_printf *pf, int nb)
 {
 	if (pf->conv == 'x' || pf->conv == 'X')
 	{

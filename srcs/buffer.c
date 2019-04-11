@@ -1,14 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   buffer.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/11 20:17:44 by mjouffro          #+#    #+#             */
+/*   Updated: 2019/04/11 21:01:39 by mjouffro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_printf.h"
 
-void		end(t_printf *pf)
+void		reset_struct(t_printf *pf)
 {
-	pf->buff[pf->buff_i] = '\0';
-	write(pf->fd, pf->buff, pf->buff_i);
-	pf->ret +=  pf->buff_i;
-	va_end(pf->ap);
+	pf->flags = 0;
+	pf->precision = 0;
+	pf->min_len = 0;
+	pf->neg = 0;
+	pf->base = 0;
+	pf->conv = 0;
+	pf->pad = 0;
 }
 
-void	reset_buff(t_printf *pf)
+void		reset_buff(t_printf *pf)
 {
 	write(pf->fd, pf->buff, BUFF_SIZE - 1);
 	ft_bzero(pf->buff, BUFF_SIZE);
@@ -16,7 +31,7 @@ void	reset_buff(t_printf *pf)
 	pf->buff_i = 0;
 }
 
-void	check_buff(t_printf *pf)
+void		check_buff(t_printf *pf)
 {
 	if (pf->buff_i == BUFF_SIZE - 1)
 		reset_buff(pf);
@@ -29,7 +44,8 @@ void		buffer(t_printf *pf, char *str, int len)
 	i = 0;
 	if (pf->buff_i + len >= BUFF_SIZE - 1)
 	{
-		ft_memcpy(&pf->buff[pf->buff_i], &str[i], ((BUFF_SIZE - 1) - pf->buff_i));
+		ft_memcpy(&pf->buff[pf->buff_i], &str[i],
+				((BUFF_SIZE - 1) - pf->buff_i));
 		i += (BUFF_SIZE - 1) - pf->buff_i;
 		reset_buff(pf);
 		buffer(pf, str, len);
@@ -42,13 +58,13 @@ void		buffer(t_printf *pf, char *str, int len)
 void		wstr_tobuff(t_printf *pf, wchar_t *str, int len)
 {
 	int i;
-	 
+
 	i = 0;
 	while (len > 0)
 	{
-		i = w_charlen(*str);
+		i = ft_wcharlen(*str);
 		buffer(pf, ft_get_wchar(*str), i);
-		len-= i;
+		len -= i;
 		str++;
 	}
 }

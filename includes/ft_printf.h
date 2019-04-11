@@ -6,12 +6,12 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/09 17:39:18 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:50:32 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <stdlib.h>
@@ -24,33 +24,60 @@
 
 # define BUFF_SIZE 128
 
-# define ABS(Value) (Value < 0) ? -Value : Value
-# define DABS(Value)(Value < 0.0f) ? -Value : Value
-# define MAX(a, b)  a > b ? a : b
-# define MIN(a, b)  a < b ? a : b
-# define STRERR			strerror
-
+# define ABS(Value)  (Value < 0) ? -Value : Value
+# define DABS(Value) (Value < 0.0f) ? -Value : Value
+# define MAX(a, b)   a > b ? a : b
+# define MIN(a, b)   a < b ? a : b
+# define STRERR		 strerror
 
 /*
-**-------------------------------- FLAGS & SPEC ----------------------------
+** To generate the same warnings as the real printf :
 */
 
-# define F_HASH  (1 << 0)   //  '#'    00001 = 1  
-# define F_SPACE (1 << 1)  //  ' '    00010 = 2
-# define F_PLUS  (1 << 2)   //  '+'    00100 = 4  // sign of number
-# define F_MINUS (1 << 3)  //  '-'    01000 = 8  // left justify
-# define F_ZERO  (1 << 4)    // '0'    10000 = 16
-
-# define LM_SHORT  (1 << 5)  //  'h'  (di) short  int 	 /   (uox) unsigned short     int 
-# define LM_LONG   (1 << 6)  //  'l'  (di) long 	 int 	 /   (uox) unsigned long      int
-# define LM_DOUBLE (1 << 7)  //  'L'
-# define LM_INTMAX (1 << 8)  //  'j' 	   intmax_t      /   uintmax_t
-# define LM_SIZE_T (1 << 9)  //  'z'          size_t      /   ssize_t
-# define LM_CHAR   (1 << 10) //  'hh'   signed char
-# define LM_LONG2  (1 << 11) //  'll'  (di) long long  int /   (uox) unsigned long long int
+# define PRINTFRET __attribute__ ((__format__(printf, 1, 2))) int
 
 /*
-**----------------------------------- BASES -------------------------------
+** -------------------------------- FLAGS --------------------------------
+*/
+
+/*
+** F_HASH  (1 << 0) --> '#'   0000 0000 0001  -->  alternate form ("0x", '0')
+** F_SPACE (1 << 1) --> ' '   0000 0000 0010  -->  ' ' b4 positive number
+** F_PLUS  (1 << 2) --> '+'   0000 0000 0100  -->  display sign of number
+** F_MINUS (1 << 3) --> '-'   0000 0000 1000  -->  left justify/padding
+** F_ZERO  (1 << 4) --> '0'   0000 0001 0000  -->  '0' padding
+*/
+
+# define F_HASH  (1 << 0)
+# define F_SPACE (1 << 1)
+# define F_PLUS  (1 << 2)
+# define F_MINUS (1 << 3)
+# define F_ZERO  (1 << 4)
+
+/*
+** --------------------------- LENGTH MODIFIERS --------------------------
+*/
+
+/*
+** LM_SHORT  (1 << 5)  --> 'h'   0000 0010 0000  -->  short int/uint
+** LM_LONG   (1 << 6)  --> 'l'   0000 0100 0000  -->  long  int/uint
+** LM_DOUBLE (1 << 7)  --> 'L'   0000 1000 0000  -->  double (floats)
+** LM_INTMAX (1 << 8)  --> 'j'   0001 0000 0000  -->  intmax_t/uintmax_t
+** LM_SIZE_T (1 << 9)  --> 'z'   0010 0000 0000  -->  ssize_t/size_t
+** LM_CHAR   (1 << 10) --> 'hh'  0100 0000 0000  -->  signed/unsigned char
+** LM_LONG2  (1 << 11) --> 'll'  1000 0000 0000  -->  long long int/uint
+*/
+
+# define LM_SHORT  (1 << 5)
+# define LM_LONG   (1 << 6)
+# define LM_DOUBLE (1 << 7)
+# define LM_INTMAX (1 << 8)
+# define LM_SIZE_T (1 << 9)
+# define LM_CHAR   (1 << 10)
+# define LM_LONG2  (1 << 11)
+
+/*
+** -------------------------------- BASES --------------------------------
 */
 
 # define B_DEC 10
@@ -59,7 +86,7 @@
 # define B_HEX (1 << 4)
 
 /*
-**----------------------------------- COLORS -------------------------------
+** -------------------------------- COLORS -------------------------------
 */
 
 # define C_BOLD		    "\033[1m"
@@ -74,30 +101,27 @@
 # define C_WHITE		"\033[37m"
 
 /*
-**----------------------------------- STRUCT -------------------------------
+** -------------------------------- STRUCT -------------------------------
 */
 
 typedef struct	s_printf
 {
-    int         ret;
-    int         fd;
-	int		    flags;
-    int         min_len;
-	int		    precision;
-    int		    base;
-    int         pad;
-    int         neg;
-    int		    buff_i;
-	char	    buff[BUFF_SIZE];
-	char	    *format;
-    char        conv;
-    va_list     ap;
+	int			ret;
+	int			fd;
+	int			flags;
+	int			min_len;
+	int			precision;
+	int			base;
+	int			neg;
+	int			pad;
+	int			buff_i;
+	char		buff[BUFF_SIZE];
+	char		*format;
+	char		conv;
+	va_list		ap;
 }				t_printf;
 
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
-
-typedef  void(*t_f_conv)(t_printf*);
+typedef	void(*t_f_conv)(t_printf*);
 
 typedef struct	s_conv
 {
@@ -105,38 +129,44 @@ typedef struct	s_conv
 	t_f_conv	funct;
 }				t_conv;
 
-void	reset_struct(t_printf *pf);
-void    color_or_char(t_printf *pf);
+/*
+** ------------------------------- PRINTF -------------------------------
+*/
+
+PRINTFRET		ft_printf(const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
+
+void			reset_struct(t_printf *pf);
+void			color_or_char(t_printf *pf);
 char			*color(t_printf *pf);
 
 /*
-**---------------------------------- PARSING -------------------------------
+** ------------------------------- PARSING -------------------------------
 */
 
 int				parse_arg(t_printf *pf);
 
 /*
-**-------------------------------- CONVERSIONS -----------------------------
+** ------------------------------ CONVERSIONS ----------------------------
 */
 
-void		    ft_castconvint(t_printf *pf);
-void	        ft_castconvuox(t_printf *pf);
-int		        is_conv(t_printf *pf);
+void			print_ptr_add(t_printf *pf);
+int				is_conv(t_printf *pf);
 int				conv_to_fct(t_printf *pf);
 int				get_conversion(t_printf *pf);
-void		    print_ptr_add(t_printf *pf);
 
 /*
-**-------------------------------- BUFF MANAGER ----------------------------
+** ----------------------------- BUFF MANAGER ----------------------------
 */
 
-void	reset_buff(t_printf *pf);
-void	check_buff(t_printf *pf);
-void	buffer(t_printf *pf, char *str, int len);
-void	wstr_tobuff(t_printf *pf, wchar_t *str, int len);
-void	end(t_printf *pf);
+void			reset_buff(t_printf *pf);
+void			check_buff(t_printf *pf);
+void			buffer(t_printf *pf, char *str, int len);
+void			wstr_tobuff(t_printf *pf, wchar_t *str, int len);
+void			end(t_printf *pf);
+
 /*
-**---------------------------------- PADDING -------------------------------
+** ------------------------------ PADDING --------------------------------
 */
 
 void			hash_padding(t_printf *pf);
@@ -144,51 +174,52 @@ void			min_padding(t_printf *pf, char c, int len);
 void			char_padding(t_printf *pf, char c);
 
 /*
-**----------------------------------- CHECK --------------------------------
+** ---------------------------- CHECKS FLAGS -----------------------------
 */
 
-void				plus_flag_pad(t_printf *pf, int len);
-void				zero_flag_pad(t_printf *pf, int len);
-void				hash_flag_pad(t_printf *pf, int nb);
+void			plus_flag_pad(t_printf *pf, int len);
+void			zero_flag_pad(t_printf *pf, int len);
+void			hash_flag_pad(t_printf *pf, int nb);
 
 /*
-**--------------------------------- NUMBERS -------------------------------
+** ------------------------------ NUMBERS --------------------------------
 */
 
+void			ft_castconvint(t_printf *pf);
+void			ft_castconvuox(t_printf *pf);
 void			int_conv(t_printf *pf, intmax_t nb);
 void			uint_conv(t_printf *pf, uintmax_t nb);
-void		    ox_conv(t_printf *pf, uintmax_t nb);
-uintmax_t	    treat_negaspos(t_printf *pf, intmax_t nb);
+void			ox_conv(t_printf *pf, uintmax_t nb);
+uintmax_t		treat_negaspos(t_printf *pf, intmax_t nb);
 
 /*
-**---------------------------- CHAR & STRINGS -----------------------------
+** ---------------------------- CHAR & STRINGS ---------------------------
 */
 
-void		char_conv(t_printf *pf);
-void        wchar_conv(t_printf *pf);
-void	    str_conv(t_printf *pf);
-void	    wstr_conv(t_printf *pf);
-size_t		wslen_tobuff(wchar_t *s, int wslen);
+void			char_conv(t_printf *pf);
+void			wchar_conv(t_printf *pf);
+void			str_conv(t_printf *pf);
+void			wstr_conv(t_printf *pf);
+size_t			wslen_tobuff(wchar_t *s, int wslen);
 
 /*
-**----------------------------------- UTILS -------------------------------
+** -------------------------------- UTILS --------------------------------
 */
 
 void			*ft_memset(void *s, int c, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_bzero(void *s, size_t n);
-void			ft_putstr_fd(char const *s, int fd);
-int		        ft_nbrlen(uintmax_t nb, intmax_t base);
-int				find_flag(char *str, char c);
-char			*ft_strcpy(char *dest, const char *src);
 char			*to_upper(char *str);
-char		    find_conv(char *str, char c);
-char	        *to_upper(char *str);
-char		    *ft_lltoa_base(uintmax_t nb, intmax_t base);
-char		    *ft_get_wchar(wint_t wc);
-size_t		    w_charlen(wint_t wc);
+char			*ft_lltoa_base(uintmax_t nb, intmax_t base);
+char			*ft_strcpy(char *dest, const char *src);
+char			*ft_get_wchar(wint_t wc);
+char			find_conv(char *str, char c);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_nbrlen(uintmax_t nb, intmax_t base);
+int				find_flag(char *str, char c);
 size_t			ft_strlen(const char *str);
-size_t	        ft_wstrlen(wchar_t *s);
+size_t			ft_wcharlen(wint_t wc);
+size_t			ft_wstrlen(wchar_t *s);
 intmax_t		ft_atoi(char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:05 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 20:36:58 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:23:26 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void		print_ptr_add(t_printf *pf)
 		hash_padding(pf);
 	else
 	{
-        !(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
+		!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 		hash_padding(pf);
-        buffer(pf, ft_lltoa_base((uintmax_t)ptr, pf->base),len);
-        (pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
+		buffer(pf, ft_lltoa_base((uintmax_t)ptr, pf->base), len);
+		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 	}
 }

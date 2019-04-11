@@ -6,13 +6,11 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:43:08 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/08 23:48:06 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:02:46 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-/* -------------- PT_FUNCT -------------- */
 
 t_conv g_conv[] =
 {
@@ -21,12 +19,7 @@ t_conv g_conv[] =
 	{"cC%", &char_conv},
 	{"sS", &str_conv},
 	{"p", &print_ptr_add}
-	//{"\033[", &color}
 };
-	//	{"sS", &str_conv}
-	//{"f", &float_conv},
-	//{"sS", &&pf_putstr},
-	//{"p", &print_ptr_add},
 
 int		is_conv(t_printf *pf)
 {
@@ -52,6 +45,10 @@ int		conv_to_fct(t_printf *pf)
 	return (1);
 }
 
+/*
+** find_conv returns a char : the proper conv ("s,d,x..")
+*/
+
 int		get_conversion(t_printf *pf)
 {
 	if ((pf->conv = find_conv("sSpdDioOuUxXcCfFbB%M", *pf->format)) != 0)
@@ -67,9 +64,6 @@ int		get_conversion(t_printf *pf)
 			pf->base = B_DEC;
 	}
 	else
-	{
-		//no_specifiers(pf);
 		return (0);
-	}
 	return (1);
 }
