@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 21:50:32 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/11 22:05:39 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,16 @@ void			int_conv(t_printf *pf, intmax_t nb);
 void			uint_conv(t_printf *pf, uintmax_t nb);
 void			ox_conv(t_printf *pf, uintmax_t nb);
 uintmax_t		treat_negaspos(t_printf *pf, intmax_t nb);
+
+/*
+** ------------------------------- FLOATS -------------------------------
+*/
+
+void            float_conv(t_printf *pf);
+void            f_conv(t_printf *pf, long double nb);
+int                isnan(long double nb);
+int                isinf(long double nb);
+intmax_t        pow_ten(intmax_t nb, int n);
 
 /*
 ** ---------------------------- CHAR & STRINGS ---------------------------

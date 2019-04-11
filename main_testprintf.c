@@ -299,11 +299,38 @@ int main (void)
 
 //	ft_printf("Coucou %.0s\n", "hi");
 
-	printf("%04.2%\n");
-	ft_printf("%04.2%\n");
+	//printf("%04.2%\n");
+	//ft_printf("%04.2%\n");
 
-	printf("%4.2%\n");
-	ft_printf("%4.2%\n");
+	//printf("%4.2%\n");
+	//ft_printf("%4.2%\n");
 //	ft_printf("%d hoho %d!\n", 0, 54);
+
+	/*printf("{%10R}");
+	ft_printf("{%10R}");
+
+	printf("{%03.c}\n", 0);
+	ft_printf("{%03.c}\n", 0);
+
+	printf("{%-15Z}\n", 123);
+	ft_printf("{%-15Z}\n", 123);
+
+	printf("%.5p\n", 0);
+	ft_printf("%.5p\n", 0);	
+
+	printf("{%05.c}\n", 0);
+	ft_printf("{%05.c}\n", 0);
+	
+	printf("{%.*s}\n", -5, "42");
+	ft_printf("{%.*s}\n", -5, "42");
+
+	printf("{%3*d}\n", 0, 0);
+	ft_printf("{%3*d}\n", 0, 0);
+*/
+	printf("%010.15f\n", 46565321.78);
+	ft_printf("%010.15f\n", 46565321.78);
+
+	printf("% 5.10f\n", 0.78);
+	ft_printf("% 5.10f\n", 0.78);
     return (0);
 }

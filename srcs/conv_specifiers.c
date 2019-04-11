@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:43:08 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 21:02:46 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/11 22:06:33 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_conv g_conv[] =
 	{"uUoOxXbB", &ft_castconvuox},
 	{"cC%", &char_conv},
 	{"sS", &str_conv},
-	{"p", &print_ptr_add}
+	{"p", &print_ptr_add},
+	{"f", &float_conv}
 };
 
 int		is_conv(t_printf *pf)

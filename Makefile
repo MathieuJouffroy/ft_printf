@@ -26,6 +26,9 @@ CONV	=		$(CONVDIR)cast_nbrs.c			\
 				$(CONVDIR)numbers.c				\
 				$(CONVDIR)char_strings.c		\
 				$(CONVDIR)ptr.c					\
+				$(CONVDIR)float.c				\
+				$(CONVDIR)float_args.c			\
+				$(CONVDIR)maths.c				\
 
 UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)ft_bzero.c			\
