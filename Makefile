@@ -28,7 +28,6 @@ CONV	=		$(CONVDIR)cast_nbrs.c			\
 				$(CONVDIR)ptr.c					\
 				$(CONVDIR)float.c				\
 				$(CONVDIR)float_args.c			\
-				$(CONVDIR)maths.c				\
 
 UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)ft_bzero.c			\
@@ -45,6 +44,7 @@ UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)ft_wcharlen.c 		\
 				$(UTILSDIR)ft_wstrlen.c 		\
 				$(UTILSDIR)ft_get_wchar.c 		\
+				$(UTILSDIR)maths.c 				\
 
 
 UTIOBJ	= $(UTILS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 22:05:39 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/23 19:29:58 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,11 +196,8 @@ uintmax_t		treat_negaspos(t_printf *pf, intmax_t nb);
 ** ------------------------------- FLOATS -------------------------------
 */
 
-void            float_conv(t_printf *pf);
-void            f_conv(t_printf *pf, long double nb);
-int                isnan(long double nb);
-int                isinf(long double nb);
-intmax_t        pow_ten(intmax_t nb, int n);
+void			float_conv(t_printf *pf);
+void			f_conv(t_printf *pf, long double nb);
 
 /*
 ** ---------------------------- CHAR & STRINGS ---------------------------
@@ -227,9 +224,12 @@ char			find_conv(char *str, char c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_nbrlen(uintmax_t nb, intmax_t base);
 int				find_flag(char *str, char c);
+int				isnan(long double nb);
+int				isinf(long double nb);
 size_t			ft_strlen(const char *str);
 size_t			ft_wcharlen(wint_t wc);
 size_t			ft_wstrlen(wchar_t *s);
 intmax_t		ft_atoi(char *s);
+intmax_t		pow_ten(intmax_t nb, int n);
 
 #endif
