@@ -41,7 +41,8 @@ void		wchar_conv(t_printf *pf)
 	wint_t	wc;
 
 	wc = va_arg(pf->ap, wint_t);
-	!(wclen = ft_wcharlen(wc)) ? (pf->ret = -1) : 0;
+	if (!(wclen = ft_wcharlen(wc)))
+		pf->ret = -1;
 	pf->pad = pf->min_len ? pf->min_len - wclen : 0;
 	!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 	buffer(pf, ft_get_wchar(wc), wclen);

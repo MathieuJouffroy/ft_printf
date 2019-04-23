@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pthan <pthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 21:42:16 by pthan             #+#    #+#             */
-/*   Updated: 2019/04/11 22:13:01 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/19 14:16:35 by pthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	float_conv(t_printf *pf)
 		pf->precision = 6;
 	if (pf->precision == -1)
 		pf->precision = 0;
-	if ((pf->flags & LM_LONG))
+	if (pf->flags & LM_DOUBLE)
 		nb = va_arg(pf->ap, long double);
 	else
 		nb = (long double)va_arg(pf->ap, double);
