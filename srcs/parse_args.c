@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 19:59:12 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 21:05:37 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/04/23 20:12:55 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	get_precision(t_printf *pf)
 		{
 			pf->format++;
 			pf->precision = va_arg(pf->ap, long int);
-			pf->precision = MAX(pf->precision, -1);
+			if (pf->precision <= 0)
+                pf->precision = (pf->precision == 0) ? -1 : 0;
 		}
 		while (*pf->format >= 48 && *pf->format <= 57)
 			pf->format++;
