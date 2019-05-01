@@ -6,7 +6,7 @@
 /*   By: pthan <pthan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 20:51:52 by pthan             #+#    #+#             */
-/*   Updated: 2019/04/19 14:23:24 by pthan            ###   ########.fr       */
+/*   Updated: 2019/05/01 18:14:03 by pthan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,12 @@ void			f_conv(t_printf *pf, long double nb)
 	f_flags_padding(pf, nb);
 	decimal = (pf->precision) ? ft_getdecimal(nb, pf->precision) : 0;
 	floor = (decimal == -1) ? (intmax_t)nb + 1 : (intmax_t)nb;
+	if (!pf->precision)
+	{
+		if (((int)((nb - (intmax_t)nb) * 10)) >= 5)
+		floor++;
+	}
 	ft_putllnbr(pf, floor);
-	(pf->precision) ? char_padding(pf, '.') : 0;
+	(pf->precision || (pf->flags & F_HASH)) ? char_padding(pf, '.') : 0;
 	(pf->precision) ? ft_putdecimal(pf, decimal) : 0;
 }
