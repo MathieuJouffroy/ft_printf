@@ -25,10 +25,7 @@
 # define BUFF_SIZE 128
 
 # define ABS(Value)  (Value < 0) ? -Value : Value
-# define DABS(Value) (Value < 0.0f) ? -Value : Value
 # define MAX(a, b)   a > b ? a : b
-# define MIN(a, b)   a < b ? a : b
-# define STRERR		 strerror
 
 /*
 ** To generate the same warnings as the real printf :
@@ -150,7 +147,6 @@ int				parse_arg(t_printf *pf);
 ** ------------------------------ CONVERSIONS ----------------------------
 */
 
-void			print_ptr_add(t_printf *pf);
 int				is_conv(t_printf *pf);
 int				conv_to_fct(t_printf *pf);
 int				get_conversion(t_printf *pf);
@@ -210,6 +206,14 @@ void			wstr_conv(t_printf *pf);
 size_t			wslen_tobuff(wchar_t *s, int wslen);
 
 /*
+** ----------------------------  %  & ptr address ------------------------
+*/
+
+void			print_pct(t_printf *pf);
+void			print_ptr_add(t_printf *pf);
+
+
+/*
 ** -------------------------------- UTILS --------------------------------
 */
 
@@ -218,7 +222,6 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_bzero(void *s, size_t n);
 char			*to_upper(char *str);
 char			*ft_lltoa_base(uintmax_t nb, intmax_t base);
-char			*ft_strcpy(char *dest, const char *src);
 char			*ft_get_wchar(wint_t wc);
 char			find_conv(char *str, char c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);

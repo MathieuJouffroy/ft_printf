@@ -3,7 +3,8 @@ NAME 	= 	libftprintf.a
 
 # Compilation
 CC		= 	@cc -O3
-CFLAGS	= 	-Wall -Wextra -Werror -Iincludes
+CFLAGS	= 	-Wall -Wextra -Werror -Iincludes -Wuninitialized
+
 
 SRCDIR = srcs/
 
@@ -25,7 +26,7 @@ SRCS 	=		$(SRCDIR)ft_printf.c			\
 CONV	=		$(CONVDIR)cast_nbrs.c			\
 				$(CONVDIR)numbers.c				\
 				$(CONVDIR)char_strings.c		\
-				$(CONVDIR)ptr.c					\
+				$(CONVDIR)pct_ptr.c				\
 				$(CONVDIR)float.c				\
 				$(CONVDIR)float_args.c			\
 
@@ -35,7 +36,6 @@ UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)find_flag.c			\
 				$(UTILSDIR)ft_memcpy.c			\
 				$(UTILSDIR)ft_memset.c			\
-				$(UTILSDIR)ft_strcpy.c			\
 				$(UTILSDIR)ft_strncmp.c			\
 				$(UTILSDIR)ft_strlen.c			\
 				$(UTILSDIR)to_upper.c 			\

@@ -18,6 +18,7 @@ void		print_ptr_add(t_printf *pf)
 	int		len;
 
 	ptr = (void *)va_arg(pf->ap, void *);
+	pf->flags &= ~F_HASH; 
 	len = ft_nbrlen((uintmax_t)ptr, B_HEX);
 	pf->pad = pf->min_len - 2 - len;
 	if (ptr == 0 && pf->precision == -1)
@@ -29,4 +30,16 @@ void		print_ptr_add(t_printf *pf)
 		buffer(pf, ft_lltoa_base((uintmax_t)ptr, pf->base), len);
 		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 	}
+}
+
+void		print_pct(t_printf *pf)
+{
+	pf->pad = pf->min_len ? --pf->min_len : 0;
+	if (!(pf->flags & F_MINUS))
+	{
+		(pf->flags & F_ZERO) ? min_padding(pf, '0', pf->pad)
+		: min_padding(pf, ' ', pf->pad);
+	}
+	char_padding(pf, '%');
+	(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 }

@@ -18,22 +18,23 @@ void		char_conv(t_printf *pf)
 
 	(pf->flags & F_PLUS) ? (pf->flags &= ~F_PLUS) : 0;
 	(pf->flags & F_SPACE) ? (pf->flags &= ~F_SPACE) : 0;
-	if (!((pf->flags & LM_LONG) || (pf->conv == 'C')))
+	if ((pf->flags & LM_LONG) || (pf->conv == 'C'))
+		wchar_conv(pf);
+	else
 	{
-		c = (pf->conv == 'c') ? va_arg(pf->ap, int) : '%';
+		c = va_arg(pf->ap, int);
 		pf->precision = 0;
 		pf->pad = pf->min_len ? --pf->min_len : 0;
-		(!(pf->flags & F_MINUS)) && (!(pf->flags & F_ZERO)) ?
-			min_padding(pf, ' ', pf->pad) : 0;
-		((pf->conv == '%') && (pf->flags & F_ZERO)) ?
-			min_padding(pf, '0', pf->pad) : 0;
+		if (!(pf->flags & F_MINUS))
+		{
+			(pf->flags & F_ZERO) ? min_padding(pf, '0', pf->pad)
+			: min_padding(pf, ' ', pf->pad);
+		}
 		char_padding(pf, c);
-		(pf->flags & F_MINUS) && (!(pf->flags & F_ZERO)) ?
-			min_padding(pf, ' ', pf->pad) : 0;
+		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 	}
-	else
-		wchar_conv(pf);
 }
+
 
 void		wchar_conv(t_printf *pf)
 {
@@ -60,19 +61,23 @@ void		str_conv(t_printf *pf)
 
 	(pf->flags & F_PLUS) ? (pf->flags &= ~F_PLUS) : 0;
 	(pf->flags & F_SPACE) ? (pf->flags &= ~F_SPACE) : 0;
-	if (!((pf->flags & LM_LONG) || (pf->conv == 'S')))
+	if ((pf->flags & LM_LONG) || (pf->conv == 'S'))
+		wstr_conv(pf);
+	else
 	{
 		str = va_arg(pf->ap, char*);
 		len = str ? ft_strlen(str) : 6;
 		if (pf->precision && pf->precision < len)
 			len = (pf->precision == -1) ? 0 : pf->precision;
 		pf->pad = pf->min_len ? pf->min_len - len : 0;
-		!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
+		if (!(pf->flags & F_MINUS))
+		{
+			(pf->flags & F_ZERO) ? min_padding(pf, '0', pf->pad)
+			: min_padding(pf, ' ', pf->pad);
+		}
 		str ? buffer(pf, str, len) : buffer(pf, "(null)", len);
 		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 	}
-	else
-		wstr_conv(pf);
 }
 
 void		wstr_conv(t_printf *pf)
@@ -89,7 +94,11 @@ void		wstr_conv(t_printf *pf)
 		wstrlen = pf->precision;
 	len = wstr ? wslen_tobuff(wstr, wstrlen) : wslen_tobuff(L"(null)", wstrlen);
 	pf->pad = (pf->min_len - len < 0) ? 0 : (pf->min_len - len);
-	!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
+	if (!(pf->flags & F_MINUS))
+	{
+		(pf->flags & F_ZERO) ? min_padding(pf, '0', pf->pad)
+		: min_padding(pf, ' ', pf->pad);
+	}
 	wstr ? wstr_tobuff(pf, wstr, len) : buffer(pf, "(null)", wstrlen);
 	(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 }

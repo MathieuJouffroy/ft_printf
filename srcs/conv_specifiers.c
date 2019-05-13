@@ -16,8 +16,9 @@ t_conv g_conv[] =
 {
 	{"dDi", &ft_castconvint},
 	{"uUoOxXbB", &ft_castconvuox},
-	{"cC%", &char_conv},
+	{"cC", &char_conv},
 	{"sS", &str_conv},
+	{"%", &print_pct},
 	{"p", &print_ptr_add},
 	{"f", &float_conv}
 };
