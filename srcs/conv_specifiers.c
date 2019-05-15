@@ -53,7 +53,7 @@ int		conv_to_fct(t_printf *pf)
 
 int		get_conversion(t_printf *pf)
 {
-	if ((pf->conv = find_conv("sSpdDioOuUxXcCfFbB%M", *pf->format)) != 0)
+	if ((pf->conv = find_conv("sSpdDioOuUxXcCfFbB%", *pf->format)) != 0)
 	{
 		pf->format++;
 		if ((pf->conv == 'o') || (pf->conv == 'O'))
