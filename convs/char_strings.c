@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:41:28 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 21:18:30 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/15 15:51:14 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void		char_conv(t_printf *pf)
 {
 	char c;
 
-	(pf->flags & F_PLUS) ? (pf->flags &= ~F_PLUS) : 0;
-	(pf->flags & F_SPACE) ? (pf->flags &= ~F_SPACE) : 0;
 	if ((pf->flags & LM_LONG) || (pf->conv == 'C'))
 		wchar_conv(pf);
 	else
@@ -34,7 +32,6 @@ void		char_conv(t_printf *pf)
 		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 	}
 }
-
 
 void		wchar_conv(t_printf *pf)
 {
@@ -59,8 +56,6 @@ void		str_conv(t_printf *pf)
 	char	*str;
 	int		len;
 
-	(pf->flags & F_PLUS) ? (pf->flags &= ~F_PLUS) : 0;
-	(pf->flags & F_SPACE) ? (pf->flags &= ~F_SPACE) : 0;
 	if ((pf->flags & LM_LONG) || (pf->conv == 'S'))
 		wstr_conv(pf);
 	else

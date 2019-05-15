@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/23 19:29:58 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/15 15:56:24 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,6 @@ size_t			wslen_tobuff(wchar_t *s, int wslen);
 
 void			print_pct(t_printf *pf);
 void			print_ptr_add(t_printf *pf);
-
 
 /*
 ** -------------------------------- UTILS --------------------------------

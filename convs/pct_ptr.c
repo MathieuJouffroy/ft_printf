@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ptr.c                                              :+:      :+:    :+:   */
+/*   pct_ptr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:05 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 21:23:26 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/15 15:55:55 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void		print_ptr_add(t_printf *pf)
 	int		len;
 
 	ptr = (void *)va_arg(pf->ap, void *);
-	pf->flags &= ~F_HASH; 
 	len = ft_nbrlen((uintmax_t)ptr, B_HEX);
 	pf->pad = pf->min_len - 2 - len;
 	if (ptr == 0 && pf->precision == -1)
@@ -34,7 +33,7 @@ void		print_ptr_add(t_printf *pf)
 
 void		print_pct(t_printf *pf)
 {
-	pf->pad = pf->min_len ? --pf->min_len : 0;
+	pf->pad = pf->min_len ? pf->min_len - 1 : 0;
 	if (!(pf->flags & F_MINUS))
 	{
 		(pf->flags & F_ZERO) ? min_padding(pf, '0', pf->pad)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pthan <pthan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 20:51:52 by pthan             #+#    #+#             */
-/*   Updated: 2019/05/01 18:14:03 by pthan            ###   ########.fr       */
+/*   Updated: 2019/05/15 15:50:22 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void			f_conv(t_printf *pf, long double nb)
 	if (!pf->precision)
 	{
 		if (((int)((nb - (intmax_t)nb) * 10)) >= 5)
-		floor++;
+			floor++;
 	}
 	ft_putllnbr(pf, floor);
 	(pf->precision || (pf->flags & F_HASH)) ? char_padding(pf, '.') : 0;
