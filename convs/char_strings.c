@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   char_strings.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:41:28 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/15 15:51:14 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:45:08 by MathieuJouf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		wchar_conv(t_printf *pf)
 		pf->ret = -1;
 	pf->pad = pf->min_len ? pf->min_len - wclen : 0;
 	!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
-	buffer(pf, ft_get_wchar(wc), wclen);
+	buffer(pf, ft_get_wchar(wc), 0, wclen);
 	(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 }
 
@@ -70,7 +70,7 @@ void		str_conv(t_printf *pf)
 			(pf->flags & F_ZERO) ? min_padding(pf, '0', pf->pad)
 			: min_padding(pf, ' ', pf->pad);
 		}
-		str ? buffer(pf, str, len) : buffer(pf, "(null)", len);
+		str ? buffer(pf, str, 0, len) : buffer(pf, "(null)", 0, len);
 		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 	}
 }
@@ -94,7 +94,7 @@ void		wstr_conv(t_printf *pf)
 		(pf->flags & F_ZERO) ? min_padding(pf, '0', pf->pad)
 		: min_padding(pf, ' ', pf->pad);
 	}
-	wstr ? wstr_tobuff(pf, wstr, len) : buffer(pf, "(null)", wstrlen);
+	wstr ? wstr_tobuff(pf, wstr, len) : buffer(pf, "(null)", 0, wstrlen);
 	(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 }
 

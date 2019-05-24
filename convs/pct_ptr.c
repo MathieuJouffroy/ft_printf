@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pct_ptr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:05 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/15 15:55:55 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:41:43 by MathieuJouf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		print_ptr_add(t_printf *pf)
 	{
 		!(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 		hash_padding(pf);
-		buffer(pf, ft_lltoa_base((uintmax_t)ptr, pf->base), len);
+		buffer(pf, ft_lltoa_base((uintmax_t)ptr, pf->base), 0, len);
 		(pf->flags & F_MINUS) ? min_padding(pf, ' ', pf->pad) : 0;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 19:32:47 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 21:07:57 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:42:45 by MathieuJouf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		color_or_char(t_printf *pf)
 		if (!(color(pf) == NULL))
 		{
 			to_buff = (color(pf) == C_BOLD || color(pf) == C_UNDERLINE) ? 4 : 5;
-			buffer(pf, (color(pf)), to_buff);
+			buffer(pf, (color(pf)), 0, to_buff);
 			pf->format += pf->pad;
 		}
 		else

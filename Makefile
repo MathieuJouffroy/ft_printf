@@ -3,7 +3,7 @@ NAME 	= 	libftprintf.a
 
 # Compilation
 CC		= 	@cc -O3
-CFLAGS	= 	-Wall -Wextra -Werror -Iincludes -Wuninitialized
+CFLAGS	= 	-Wall -Wextra -Werror -Iincludes
 
 
 SRCDIR = srcs/

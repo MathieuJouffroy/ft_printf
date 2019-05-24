@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/15 15:56:24 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:45:18 by MathieuJouf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,8 @@ typedef struct	s_conv
 ** ------------------------------- PRINTF -------------------------------
 */
 
-PRINTFRET		ft_printf(const char *format, ...);
+//PRINTFRET		ft_printf(const char *format, ...);
+int				ft_printf(const char *format, ...);
 int				ft_dprintf(int fd, const char *format, ...);
 
 void			reset_struct(t_printf *pf);
@@ -157,7 +158,7 @@ int				get_conversion(t_printf *pf);
 
 void			reset_buff(t_printf *pf);
 void			check_buff(t_printf *pf);
-void			buffer(t_printf *pf, char *str, int len);
+void			buffer(t_printf *pf, char *str, int i, int len);
 void			wstr_tobuff(t_printf *pf, wchar_t *str, int len);
 void			end(t_printf *pf);
 

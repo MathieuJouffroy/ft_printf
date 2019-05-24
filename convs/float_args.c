@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pthan <pthan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 21:42:16 by pthan             #+#    #+#             */
-/*   Updated: 2019/04/19 14:16:35 by pthan            ###   ########.fr       */
+/*   Updated: 2019/05/24 14:43:11 by MathieuJouf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int		check_infnan(t_printf *pf, long double nb)
 	min = (nb < 0.0) ? pf->min_len - 4 : pf->min_len - 3;
 	(pf->flags & F_MINUS) ? 0 : min_padding(pf, ' ', min);
 	if (isnan(nb) && pf->conv == 'F')
-		buffer(pf, "NAN", 3);
+		buffer(pf, "NAN", 0, 3);
 	else if (isnan(nb) && pf->conv == 'f')
-		buffer(pf, "nan", 3);
+		buffer(pf, "nan", 0, 3);
 	else if (isinf(nb) && pf->conv == 'F' && nb < 0.0)
-		buffer(pf, "-INF", 4);
+		buffer(pf, "-INF", 0, 4);
 	else if (isinf(nb) && pf->conv == 'f' && nb < 0.0)
-		buffer(pf, "-inf", 4);
+		buffer(pf, "-inf", 0, 4);
 	else if (isinf(nb) && pf->conv == 'F' && nb >= 0.0)
-		buffer(pf, "INF", 3);
+		buffer(pf, "INF", 0, 3);
 	else if (isinf(nb) && pf->conv == 'f' && nb >= 0.0)
-		buffer(pf, "inf", 3);
+		buffer(pf, "inf", 0, 3);
 	(pf->flags & F_MINUS) ? min_padding(pf, ' ', min) : 0;
 	return (i == pf->buff_i ? 1 : 0);
 }

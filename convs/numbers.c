@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   numbers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:43:04 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 21:22:37 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:41:12 by MathieuJouf      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		int_conv(t_printf *pf, intmax_t nb)
 	(pf->flags & F_SPACE) ? char_padding(pf, ' ') : 0;
 	pf->neg ? char_padding(pf, '-') : 0;
 	min_padding(pf, '0', pf->pad);
-	buffer(pf, ft_lltoa_base(new, pf->base), nb_len);
+	buffer(pf, ft_lltoa_base(new, pf->base), 0, nb_len);
 	(pf->flags & F_MINUS) ? min_padding(pf, ' ', sp_pad) : 0;
 }
 
@@ -72,7 +72,7 @@ void		uint_conv(t_printf *pf, uintmax_t nb)
 	(pf->flags & F_PLUS || pf->flags & F_SPACE) ? sp_pad-- : 0;
 	!(pf->flags & F_MINUS) ? min_padding(pf, ' ', sp_pad) : 0;
 	min_padding(pf, '0', pf->pad);
-	buffer(pf, ft_lltoa_base(nb, pf->base), nb_len);
+	buffer(pf, ft_lltoa_base(nb, pf->base), 0, nb_len);
 	(pf->flags & F_MINUS) ? min_padding(pf, ' ', sp_pad) : 0;
 }
 
@@ -96,8 +96,8 @@ void		ox_conv(t_printf *pf, uintmax_t nb)
 	hash_flag_pad(pf, nb);
 	min_padding(pf, '0', pf->pad);
 	if (pf->conv == 'X')
-		buffer(pf, to_upper(ft_lltoa_base(nb, pf->base)), nb_len);
+		buffer(pf, to_upper(ft_lltoa_base(nb, pf->base)), 0, nb_len);
 	else
-		buffer(pf, ft_lltoa_base(nb, pf->base), nb_len);
+		buffer(pf, ft_lltoa_base(nb, pf->base), 0, nb_len);
 	(pf->flags & F_MINUS) ? min_padding(pf, ' ', sp_pad) : 0;
 }
