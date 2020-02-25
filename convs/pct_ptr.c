@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pct_ptr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:05 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/24 14:41:43 by MathieuJouf      ###   ########.fr       */
+/*   Updated: 2019/05/28 18:11:40 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

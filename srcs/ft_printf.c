@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 19:32:47 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/24 14:42:45 by MathieuJouf      ###   ########.fr       */
+/*   Created: 2019/05/28 18:09:02 by mjouffro          #+#    #+#             */
+/*   Updated: 2019/05/28 18:09:04 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

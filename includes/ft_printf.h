@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:42:54 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/24 14:45:18 by MathieuJouf      ###   ########.fr       */
+/*   Updated: 2019/05/28 18:13:17 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,7 @@ typedef struct	s_conv
 ** ------------------------------- PRINTF -------------------------------
 */
 
-//PRINTFRET		ft_printf(const char *format, ...);
-int				ft_printf(const char *format, ...);
+PRINTFRET		ft_printf(const char *format, ...);
 int				ft_dprintf(int fd, const char *format, ...);
 
 void			reset_struct(t_printf *pf);
@@ -217,8 +216,8 @@ void			print_ptr_add(t_printf *pf);
 ** -------------------------------- UTILS --------------------------------
 */
 
-void			*ft_memset(void *s, int c, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
+void			*ft_memset(void *s, int c, size_t n);
 void			ft_bzero(void *s, size_t n);
 char			*to_upper(char *str);
 char			*ft_lltoa_base(uintmax_t nb, intmax_t base);

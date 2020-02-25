@@ -6,9 +6,11 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 20:51:52 by pthan             #+#    #+#             */
-/*   Updated: 2019/05/15 15:50:22 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/28 18:11:24 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/ft_printf.h"
 
 /*
 ** warning: flag ' ' is ignored when flag '+' is present [-Wformat]
@@ -17,8 +19,6 @@
 ** personal note : ' ' flag is ignored when flag '0' is present
 ** => '0' > ' '
 */
-
-#include "../includes/ft_printf.h"
 
 /*
 ** renvoie -1 si il faut incrementer la partie entiere

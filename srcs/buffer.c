@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buffer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 20:17:44 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/24 14:51:59 by MathieuJouf      ###   ########.fr       */
+/*   Updated: 2019/05/28 18:09:45 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ void		check_buff(t_printf *pf)
 	if (pf->buff_i == BUFF_SIZE - 1)
 		reset_buff(pf);
 }
+
+/*
+** buffer function allows us to write directly in the static buffer
+** when called i will always be set to 0
+** n corresponds to len of string
+** if the index of the buffer + the len of the string is bigger than
+** BUFF SIZE we copy BUFF SIZE minus index of buffer, then add this result
+** to i to continue and writing in the buffer
+*/
 
 void		buffer(t_printf *pf, char *str, int i, int n)
 {

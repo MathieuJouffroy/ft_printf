@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 21:42:16 by pthan             #+#    #+#             */
-/*   Updated: 2019/05/24 14:43:11 by MathieuJouf      ###   ########.fr       */
+/*   Updated: 2019/05/28 18:11:10 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

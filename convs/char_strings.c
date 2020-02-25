@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   char_strings.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 15:41:28 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/24 14:45:08 by MathieuJouf      ###   ########.fr       */
+/*   Created: 2019/05/28 18:11:03 by mjouffro          #+#    #+#             */
+/*   Updated: 2019/05/28 18:11:04 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

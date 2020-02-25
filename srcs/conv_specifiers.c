@@ -6,7 +6,7 @@
 /*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 15:43:08 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/04/11 22:06:33 by mjouffro         ###   ########.fr       */
+/*   Updated: 2019/05/28 18:09:19 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		is_conv(t_printf *pf)
 	int i;
 
 	i = 0;
-	while (i < 8)
+	while (i < 7)
 	{
 		if (find_conv(g_conv[i].c, pf->conv))
 			return (i);

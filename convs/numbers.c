@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   numbers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: MathieuJouffroy <MathieuJouffroy@studen    +#+  +:+       +#+        */
+/*   By: mjouffro <mjouffro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 15:43:04 by mjouffro          #+#    #+#             */
-/*   Updated: 2019/05/24 14:41:12 by MathieuJouf      ###   ########.fr       */
+/*   Created: 2019/05/28 18:11:33 by mjouffro          #+#    #+#             */
+/*   Updated: 2019/05/28 18:11:34 by mjouffro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
