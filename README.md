@@ -1,5 +1,9 @@
 # ft_printf
 
+## Usage
+
+git clone https://github.com/MathieuJouffroy/ft_printf.git && cd ft_printf && make
+
 ```c
 #include "ft_printf.h"
 
@@ -13,8 +17,10 @@ int				main(void)
 	return (0);
 }
 // value: 42
-// string: Hello World
+// string: Hello World!
 ```
 
+### Compiling with a program
 ```console
+gcc -Wall -Werror -Wextra main.c 
 ```
